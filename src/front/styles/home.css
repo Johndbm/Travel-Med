@@ -5,3 +5,48 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+
+.gerente {
+  height: 300px;
+  width: 300px;
+  border-radius: 100px;
+}
+
+.containersn {
+  border-radius: 30px;
+  background-color: rgb(42, 140, 251);
+}
+
+.card {
+  width: 300px;
+  height: 350px;
+  border: 1px solid black;
+  background-color: rgb(88, 135, 223);
+  border-radius: 15px;
+}
+
+.card-img-top {
+  height: 160px;
+  border: 1px solid black;
+}
+
+section {
+  display: flex;
+  width: 600px;
+  height: 430px;
+}
+
+section img {
+  width: 0px;
+  flex-grow: 1;
+  object-fit: cover;
+  opacity: 8;
+  transition: 5 ease;
+}
+
+section img:hover {
+  cursor: crosshair;
+  width: 300px;
+  opacity: 1;
+  filter: contrast(120%);
+}
