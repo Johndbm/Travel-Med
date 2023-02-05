@@ -4,6 +4,7 @@ import ImageUrl from "../../img/logo5.png";
 
 export const Navbar = () => {
 	return (
+  
 		// <!-- Navbar -->
 <nav className="navbar navbar-expand-lg navbar-info bg-">
   {/* <!-- Container wrapper --> */}
