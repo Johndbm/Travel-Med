@@ -59,6 +59,7 @@ export const Navbar = () => {
           <i className="fas fa-bell"></i>
           <span className="badge rounded-pill badge-notification bg-danger">1</span>
         </a>
+        
         <ul
           className="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuLink"
