@@ -20,20 +20,20 @@ export const Navbar = () => {
         >
           <i className="fas fa-bars"></i>
         </button>
-    
+
         {/* <!-- Collapsible wrapper --> */}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {/* <!-- Navbar brand --> */}
-        <Link to="/">
+          <Link to="/">
             <a className="navbar-brand mt-2 mt-lg-0" href="#">
               <img
                 src="logo5.png"
-                height="15"
+                height="75"
                 alt="MDB Logo"
                 loading="lazy"
               />
             </a>
-        </Link>
+          </Link>
           {/* <!-- Left links --> */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
@@ -49,14 +49,65 @@ export const Navbar = () => {
           {/* <!-- Left links --> */}
         </div>
         {/* <!-- Collapsible wrapper --> */}
-    
+
         {/* <!-- Right elements --> */}
         <div className="d-flex align-items-center">
           {/* <!-- Icon --> */}
           {/* <a className="text-reset me-3" href="#">
             <i className="fas fa-shopping-cart"></i>
           </a> */}
-idiomas    
+          {/* idiomas     */}
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid">
+              <ul className="navbar-nav">
+                {/* <!-- Icon dropdown --> */}
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-mdb-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i className="flag-united-kingdom flag m-0"></i>
+                  </a>
+                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                      <a className="dropdown-item" href="#"
+                      ><i className="flag-united-kingdom flag"></i>English
+                        <i className="fa fa-check text-success ms-2"></i></a>
+                    </li>
+                    <li><hr className="dropdown-divider" /></li>
+                    <li>
+                      <a className="dropdown-item" href="#"><i className="flag-poland flag"></i>Polski</a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#"><i className="flag-china flag"></i>中文</a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#"><i className="flag-japan flag"></i>日本語</a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#"><i className="flag-germany flag"></i>Deutsch</a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#"><i className="flag-france flag"></i>Français</a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#"><i className="flag-spain flag"></i>Español</a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#"><i className="flag-russia flag"></i>Русский</a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#"><i className="flag-portugal flag"></i>Português</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
           {/* <!-- Notifications --> */}
           <div className="dropdown">
             <a
@@ -88,119 +139,40 @@ idiomas
           {/* <!-- Avatar --> */}
           <div className="dropdown">
             <Link to="/signin">
-            <a
-              className="dropdown-toggle d-flex align-items-center hidden-arrow"
-              href="#"
-              id="navbarDropdownMenuAvatar"
-              role="button"
-              data-mdb-toggle="dropdown"
-              aria-expanded="true"
-            >
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                className="rounded-circle"
-                height="25"
-                alt="Black and White Portrait of a Man"
-                loading="lazy"
-              />
-            </a>
-            <ul
-              className="dropdown-menu dropdown-menu-end"
-              aria-labelledby="navbarDropdownMenuAvatar"
-            >
-              <li>
-                <a className="dropdown-item" href="#">Mi perfil</a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">Ajustes</a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">Cerrar Sesión</a>
-              </li>
-            </ul>
+              <a
+                className="dropdown-toggle d-flex align-items-center hidden-arrow"
+                href="#"
+                id="navbarDropdownMenuAvatar"
+                role="button"
+                data-mdb-toggle="dropdown"
+                aria-expanded="true"
+              >
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                  className="rounded-circle"
+                  height="25"
+                  alt="Black and White Portrait of a Man"
+                  loading="lazy"
+                />
+              </a>
+              <ul
+                className="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdownMenuAvatar"
+              >
+                <li>
+                  <a className="dropdown-item" href="#">Mi perfil</a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">Ajustes</a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">Cerrar Sesión</a>
+                </li>
+              </ul>
             </Link>
           </div>
-            
         </div>
-        {/* <!-- Right elements --> */}
       </div>
-      {/* <!-- Container wrapper --> */}
     </nav>
-    // <!-- Navbar -->
-
-
-
-
-
-    //   <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  // {/* <!-- Container wrapper --> */}
-  // <div className="container-fluid">
-  //   {/* <!-- Toggle button --> */}
-  //   <button
-  //     className="navbar-toggler"
-  //     type="button"
-  //     data-mdb-toggle="collapse"
-  //     data-mdb-target="#navbarSupportedContent"
-  //     aria-controls="navbarSupportedContent"
-  //     aria-expanded="false"
-  //     aria-label="Toggle navigation"
-  //   >
-  //     <i className="fas fa-bars"></i>
-  //   </button>
-
-  //   {/* <!-- Collapsible wrapper --> */}
-  //   <div className="collapse navbar-collapse" id="navbarSupportedContent">
-  //     {/* <!-- Navbar brand --> */}
-  //     <a className="navbar-brand mt-2 mt-lg-0" href="#">
-  //       <img
-  //         src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-  //         height="15"
-  //         alt="MDB Logo"
-  //         loading="lazy"
-  //       />
-  //     </a>
-  //           </div>
-  //         </nav>
-  //         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  //           <div className="container-fluid">
-  //             <ul className="navbar-nav">
-  //               {/* <!-- Avatar --> */}
-  //               <li className="nav-item dropdown">
-  //                 <a
-  //                   className="nav-link dropdown-toggle d-flex align-items-center"
-  //                   href="#"
-  //                   id="navbarDropdownMenuLink"
-  //                   role="button"
-  //                   data-mdb-toggle="dropdown"
-  //                   aria-expanded="false"
-  //                 >
-  //                   <img
-  //                     src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
-  //                     className="rounded-circle"
-  //                     height="22"
-  //                     alt="Portrait of a Woman"
-  //                     loading="lazy" />
-  //                 </a>
-  //                 <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-  //                   <li>
-  //                     <a className="dropdown-item" href="#">Registrate</a>
-  //                   </li>
-  //                   <li>
-  //                     <a className="dropdown-item" href="#">Mi perfil</a>
-  //                   </li>
-  //                   <li>
-  //                     <a className="dropdown-item" href="#">Ajustes</a>
-  //                   </li>
-  //                   <li>
-  //                     <a className="dropdown-item" href="#">Cerrar seccion</a>
-  //                   </li>
-  //                 </ul>
-  //               </li>
-  //             </ul>
-  //           </div>
-  //         </nav>
-  //       </div>
-  //     </div>
-  //    </nav> 
-          );
+  );
 };
