@@ -166,7 +166,7 @@ export const Navbar = () => {
                   <a className="dropdown-item" href="#">Ajustes</a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">Cerrar Sesión</a>
+                  <a className="dropdown-item" href="#">Cerrar Sesión.</a>
                 </li>
               </ul>
             </Link>
