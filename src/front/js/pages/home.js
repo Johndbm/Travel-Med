@@ -14,6 +14,7 @@ export const Home = () => {
 
   return (
     <>
+    
       <div
         id="carouselExampleAutoplaying"
         className="carousel slide"
@@ -160,6 +161,7 @@ export const Home = () => {
           </a>
         </p>
       </div>
+      
     </>
   );
 };
