@@ -14,7 +14,7 @@ export const Especialistas = () => {
     <>
       <div className="d-flex justify-content-center ">
         <div className="card card-es">
-          <img src={medico1} className="card-img-top" alt="..." />
+          <img src={medico1} className="card-img-top-esp" alt="..." />
           <div className="card-body">
             <h5 className="card-title">Dr Carlos Amundaray</h5>
             <p className="card-text">
@@ -28,7 +28,7 @@ export const Especialistas = () => {
         </div>
 
         <div className="card card-es">
-          <img src={medico2} className="card-img-top" alt="..." />
+          <img src={medico2} className="card-img-top-esp" alt="..." />
           <div className="card-body">
             <h5 className="card-title">Dra Kathernine Valdivieso</h5>
             <p className="card-text">
@@ -44,7 +44,7 @@ export const Especialistas = () => {
 
       <div className="d-flex justify-content-center ">
         <div className="card card-es">
-          <img src={medico3} className="card-img-top" alt="..." />
+          <img src={medico3} className="card-img-top-esp" alt="..." />
           <div className="card-body">
             <h5 className="card-title">Dra Rebecca Lombardi</h5>
             <p className="card-text">
@@ -58,7 +58,7 @@ export const Especialistas = () => {
         </div>
 
         <div className="card card-es">
-          <img src={medico4} className="card-img-top" alt="..." />
+          <img src={medico4} className="card-img-top-esp" alt="..." />
           <div className="card-body">
             <h5 className="card-title">Dr Armando Caraballo</h5>
             <p className="card-text">

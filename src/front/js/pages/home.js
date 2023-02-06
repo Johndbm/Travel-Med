@@ -14,7 +14,7 @@ export const Home = () => {
 
   return (
     <>
-    
+    {/* Carrusel uno */}
       <div
         id="carouselExampleAutoplaying"
         className="carousel slide"
