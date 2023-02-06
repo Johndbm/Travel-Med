@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ImageUrl from "../../img/logo5.png";
 
 export const Login = () => {
   return (
