@@ -5,6 +5,10 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+body {
+  margin: 0;
+  padding: 0;
+}
 
 .gerente {
   height: 300px;
@@ -14,14 +18,15 @@
 
 .containersn {
   border-radius: 30px;
-  background-color: rgb(42, 140, 251);
+  /* background-color: rgb(42, 140, 251); */
+  background: linear-gradient(rgb(171, 205, 231), rgb(6, 127, 225));
 }
 
 .card {
   width: 300px;
   height: 350px;
   border: 1px solid black;
-  background-color: rgb(88, 135, 223);
+  background-color: rgb(6, 127, 220);
   border-radius: 15px;
 }
 
@@ -32,8 +37,9 @@
 
 section {
   display: flex;
-  width: 600px;
-  height: 430px;
+  width: 800px;
+  height: 630px;
+  border: 1px solid black;
 }
 
 section img {
@@ -49,4 +55,24 @@ section img:hover {
   width: 300px;
   opacity: 1;
   filter: contrast(120%);
+}
+
+.carrusel {
+  height: 500px;
+  width: 1550px;
+}
+
+.navbar,
+.footer {
+  background-color: rgb(6, 127, 225);
+}
+
+.card-es {
+  background-color: blanchedalmond;
+  width: 400px;
+  height: 500px;
+  margin: 15px;
+}
+.card-img-top-esp {
+  height: 250px;
 }
