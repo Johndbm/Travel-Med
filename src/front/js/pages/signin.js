@@ -10,20 +10,24 @@ export const Signin = () => {
     // Aquí pienso colocar dos acordeones, uno de Login y otro de Registro
     <div className="container">
       <div className="d-flex justify-content-center gap-2">
-        <button
-          type="button"
-          className="btn btn-primary btn-lg"
-          onClick={() => actions}
-        >
-          Login
-        </button>
-        <button
-          type="button"
-          className="btn btn-secondary btn-lg"
-          onClick={() => actions}
-        >
-          Register
-        </button>
+        <Link to="/login">
+          <button
+            type="button"
+            className="btn btn-primary btn-lg"
+            onClick={() => actions}
+          >
+            Login
+          </button>
+        </Link>
+        <Link to="/register">
+          <button
+            type="button"
+            className="btn btn-secondary btn-lg"
+            onClick={() => actions}
+          >
+            Register
+          </button>
+        </Link>
       </div>
     </div>
   );
