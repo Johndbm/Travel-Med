@@ -6,6 +6,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Especialistas } from "./pages/especialistas.js";
+import { Pago } from "./pages/pago.js";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -22,17 +23,17 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Navbar/>
+          <Navbar />
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Demo />} path="/demo" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<Signin />} path="/signin" />
             <Route element={<Especialistas />} path="/especialistas" />
+            <Route element={<Pago />} path="/pago" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
-          <Footer/>
-          
+          <Footer />
         </ScrollToTop>
       </BrowserRouter>
     </div>
