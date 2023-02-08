@@ -22,18 +22,18 @@ export const Home = () => {
       >
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={doctor1} className="d-block carrusel" alt="..." />
+            <img src={doctor1} className="d-block w-100 carrusel" alt="..." />
           </div>
           <div className="carousel-item">
-            <img src={doctor2} className="d-block carrusel" alt="..." />
-          </div>
-
-          <div className="carousel-item">
-            <img src={doctor3} className="d-block carrusel" alt="..." />
+            <img src={doctor2} className="d-block  w-100 carrusel" alt="..." />
           </div>
 
           <div className="carousel-item">
-            <img src={doctor4} className="d-block carrusel" alt="..." />
+            <img src={doctor3} className="d-block  w-100 carrusel" alt="..." />
+          </div>
+
+          <div className="carousel-item">
+            <img src={doctor4} className="d-block  w-100 carrusel" alt="..." />
           </div>
         </div>
 

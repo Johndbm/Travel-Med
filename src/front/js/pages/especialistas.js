@@ -18,8 +18,8 @@ export const Especialistas = () => {
           <div className="card-body">
             <h5 className="card-title">Dr Carlos Amundaray</h5>
             <p className="card-text">
-              Cirujano Plastico experto en cirugia reparadora y estetica y
-              cirugia de mamas .
+              Cirujano Plastico experto en Cirugia Reconstructiva y Estetica experto en
+              Cirugia de Mamas .
             </p>
             <a href="#" className="btn btn-primary">
               Agendar cita
@@ -30,10 +30,10 @@ export const Especialistas = () => {
         <div className="card card-es">
           <img src={medico2} className="card-img-top-esp" alt="..." />
           <div className="card-body">
-            <h5 className="card-title">Dra Kathernine Valdivieso</h5>
+            <h5 className="card-title">Dra Katherine Valdivieso</h5>
             <p className="card-text">
-              Cirujano Plastico Reconstructivo, presidente de la sociedad de
-              cirugia plastica Venezolana 2016-2018
+              Cirujano Plastico Reconstructivo, Presidente de la Sociedad de
+              Cirugia Plastica Venezolana 2016-2018
             </p>
             <a href="#" className="btn btn-primary">
               Agendar cita
@@ -48,8 +48,8 @@ export const Especialistas = () => {
           <div className="card-body">
             <h5 className="card-title">Dra Rebecca Lombardi</h5>
             <p className="card-text">
-              Otorrinolaringolo Especialista en Rinoplastia Estetica y
-              Funcional. Master en Rinoplastia y cirugia de SPN.
+              Otorrinolaringologo Especialista en Rinoplastia Estetica y
+              Funcional. Master en Rinoplastia y Cirugia de SPN.
             </p>
             <a href="#" className="btn btn-primary">
               Agendar cita
