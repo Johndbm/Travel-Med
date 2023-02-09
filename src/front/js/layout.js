@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
+import { Historia } from "./pages/historia";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Especialistas } from "./pages/especialistas.js";
@@ -35,6 +36,7 @@ const Layout = () => {
             <Route element={<Register />} path="/register" />
             <Route element={<Especialistas />} path="/especialistas" />
             <Route element={<Pago />} path="/pago" />
+            <Route element={<Historia />} path="/historia" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />
