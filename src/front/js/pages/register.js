@@ -4,88 +4,76 @@ import { Link } from "react-router-dom";
 export const Register = () => {
   return (
     <div className="container">
-      <div className="card">
-        <div className="card-body p-5">
-          <h2 className="text-uppercase text-center mb-5">Create an account</h2>
-
-          <form>
-            <div className="form-outline mb-4">
-              <input
-                type="text"
-                id="form3Example1cg"
-                className="form-control form-control-lg"
-              />
-              <label className="form-label" for="form3Example1cg">
-                Your Name
-              </label>
-            </div>
-
-            <div className="form-outline mb-4">
-              <input
-                type="email"
-                id="form3Example3cg"
-                className="form-control form-control-lg"
-              />
-              <label className="form-label" for="form3Example3cg">
-                Your Email
-              </label>
-            </div>
-
-            <div className="form-outline mb-4">
-              <input
-                type="password"
-                id="form3Example4cg"
-                className="form-control form-control-lg"
-              />
-              <label className="form-label" for="form3Example4cg">
-                Password
-              </label>
-            </div>
-
-            <div className="form-outline mb-4">
-              <input
-                type="password"
-                id="form3Example4cdg"
-                className="form-control form-control-lg"
-              />
-              <label className="form-label" for="form3Example4cdg">
-                Repeat your password
-              </label>
-            </div>
-
-            <div className="form-check d-flex justify-content-center mb-5">
-              <input
-                className="form-check-input me-2"
-                type="checkbox"
-                value=""
-                id="form2Example3cg"
-              />
-              <label className="form-check-label" for="form2Example3g">
-                I agree all statements in{" "}
-                <a href="#!" className="text-body">
-                  <u>Terms of service</u>
-                </a>
-              </label>
-            </div>
-
-            <div className="d-flex justify-content-center">
-              <button
-                type="button"
-                className="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-              >
-                Register
-              </button>
-            </div>
-
-            <p className="text-center text-muted mt-5 mb-0">
-              Have already an account?{" "}
-              <a href="#!" className="fw-bold text-body">
-                <u>Login here</u>
-              </a>
-            </p>
-          </form>
+      <h1 className="d-flex justify-content-center my-5">Regístrate</h1>
+      <form className="row g-3">
+        <div className="col-md-6">
+          <label for="inputName" className="form-label">
+            Nombre
+          </label>
+          <input type="text" className="form-control" id="inputName" required />
         </div>
-      </div>
+        <div className="col-md-6">
+          <label for="inputLastname" className="form-label">
+            Apellido
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="inputLastname"
+            required
+          />
+        </div>
+        <div className="col-md-6">
+          <label for="inputEmail4" className="form-label">
+            Email
+          </label>
+          <input
+            type="email"
+            className="form-control"
+            id="inputEmail4"
+            required
+          />
+        </div>
+        <div className="col-md-6">
+          <label for="inputPassword4" className="form-label">
+            Contraseña
+          </label>
+          <input
+            type="password"
+            className="form-control"
+            id="inputPassword4"
+            required
+          />
+        </div>
+        <div className="col-md-6">
+          <label for="inputCountry" className="form-label">
+            País
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="inputCountry"
+            required
+          />
+        </div>
+        <div className="col-md-6">
+          <label for="inputCity" className="form-label">
+            Ciudad
+          </label>
+          <input type="tex" className="form-control" id="inputCity" />
+        </div>
+        <div className="col-md-4">
+          <label for="inputState" className="form-label">
+            Estado
+          </label>
+          <input type="text" className="form-control" id="inputState" />
+        </div>
+        <div className="col-12">
+          <button type="submit" className="btn btn-primary my-5">
+            Sign in
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
