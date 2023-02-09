@@ -10,56 +10,63 @@ export const Register = () => {
           <label for="inputName" className="form-label">
             Nombre
           </label>
-          <input type="name" className="form-control" id="inputName" />
+          <input type="text" className="form-control" id="inputName" required />
         </div>
         <div className="col-md-6">
           <label for="inputLastname" className="form-label">
             Apellido
           </label>
-          <input type="lastname" className="form-control" id="inputLastname" />
+          <input
+            type="text"
+            className="form-control"
+            id="inputLastname"
+            required
+          />
         </div>
         <div className="col-md-6">
           <label for="inputEmail4" className="form-label">
             Email
           </label>
-          <input type="email" className="form-control" id="inputEmail4" />
+          <input
+            type="email"
+            className="form-control"
+            id="inputEmail4"
+            required
+          />
         </div>
         <div className="col-md-6">
           <label for="inputPassword4" className="form-label">
             Contraseña
           </label>
-          <input type="password" className="form-control" id="inputPassword4" />
+          <input
+            type="password"
+            className="form-control"
+            id="inputPassword4"
+            required
+          />
         </div>
         <div className="col-md-6">
           <label for="inputCountry" className="form-label">
             País
           </label>
-          <select
+          <input
+            type="text"
+            className="form-control"
             id="inputCountry"
-            className="form-select selectpicker countrypicker"
-            data-flag="true"
-          >
-            <option selected>Seleccionar...</option>
-            <option>...</option>
-          </select>
+            required
+          />
         </div>
         <div className="col-md-6">
           <label for="inputCity" className="form-label">
             Ciudad
           </label>
-          <select id="inputCity" className="form-select">
-            <option selected>Seleccionar...</option>
-            <option>...</option>
-          </select>
+          <input type="tex" className="form-control" id="inputCity" />
         </div>
         <div className="col-md-4">
           <label for="inputState" className="form-label">
             Estado
           </label>
-          <select id="inputState" className="form-select">
-            <option selected>Seleccionar...</option>
-            <option>...</option>
-          </select>
+          <input type="text" className="form-control" id="inputState" />
         </div>
         <div className="col-12">
           <button type="submit" className="btn btn-primary my-5">
