@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import redes from "../../img/redes-sociales12-remov2.png";
 
 export const Calendar = () => (
   <>
