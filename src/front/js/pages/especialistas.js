@@ -9,7 +9,7 @@ import { Context } from "../store/appContext";
 
 export const Especialistas = () => {
   const { store, actions } = useContext(Context);
-
+  // Hay que hacer un map en esta pagina
   return (
     <>
       <div className="d-flex justify-content-center ">
@@ -18,8 +18,8 @@ export const Especialistas = () => {
           <div className="card-body">
             <h5 className="card-title">Dr Carlos Amundaray</h5>
             <p className="card-text">
-              Cirujano Plastico experto en Cirugia Reconstructiva y Estetica experto en
-              Cirugia de Mamas .
+              Cirujano Plastico experto en Cirugia Reconstructiva y Estetica
+              experto en Cirugia de Mamas .
             </p>
             <a href="#" className="btn btn-primary">
               Agendar cita
