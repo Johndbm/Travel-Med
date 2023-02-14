@@ -1,16 +1,39 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 export const Register = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+
+  const { store, actions } = useContext(Context);
+  const register = (event) => {
+    event.preventDefault();
+    actions.register(name, lastname, email, password, country, city, state);
+    console.log(Text);
+  };
+
   return (
     <div className="container">
       <h1 className="d-flex justify-content-center my-5">Regístrate</h1>
-      <form className="row g-3">
+      <form className="row g-3" onSubmit={register}>
         <div className="col-md-6">
           <label for="inputName" className="form-label">
             Nombre
           </label>
-          <input type="text" className="form-control" id="inputName" required />
+          <input
+            type="text"
+            className="form-control"
+            id="inputName"
+            required
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
         </div>
         <div className="col-md-6">
           <label for="inputLastname" className="form-label">
@@ -21,6 +44,8 @@ export const Register = () => {
             className="form-control"
             id="inputLastname"
             required
+            value={lastname}
+            onChange={(event) => setLastname(event.target.value)}
           />
         </div>
         <div className="col-md-6">
@@ -32,6 +57,8 @@ export const Register = () => {
             className="form-control"
             id="inputEmail4"
             required
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </div>
         <div className="col-md-6">
@@ -43,6 +70,8 @@ export const Register = () => {
             className="form-control"
             id="inputPassword4"
             required
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
           />
         </div>
         <div className="col-md-6">
@@ -54,19 +83,33 @@ export const Register = () => {
             className="form-control"
             id="inputCountry"
             required
+            value={country}
+            onChange={(event) => setCountry(event.target.value)}
           />
         </div>
         <div className="col-md-6">
           <label for="inputCity" className="form-label">
             Ciudad
           </label>
-          <input type="tex" className="form-control" id="inputCity" />
+          <input
+            type="tex"
+            className="form-control"
+            id="inputCity"
+            value={city}
+            onChange={(event) => setCity(event.target.value)}
+          />
         </div>
         <div className="col-md-4">
           <label for="inputState" className="form-label">
             Estado
           </label>
-          <input type="text" className="form-control" id="inputState" />
+          <input
+            type="text"
+            className="form-control"
+            id="inputState"
+            value={state}
+            onChange={(event) => setState(event.target.value)}
+          />
         </div>
         <div className="col-12">
           <button type="submit" className="btn btn-primary my-5">
