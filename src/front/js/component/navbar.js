@@ -4,173 +4,110 @@ import ImageUrl from "../../img/logo5.png";
 
 export const Navbar = () => {
   return (
-    // <!-- Navbar -->
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      {/* <!-- Container wrapper --> */}
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        {/* <!-- Toggle button --> */}
+        <Link to="/">
+          <a className="navbar-brand" href="#">
+            <img src="logo5.png" alt="Bootstrap" width={125} height={70} />
+          </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
-          data-mdb-toggle="collapse"
-          data-mdb-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <i className="fas fa-bars"></i>
+          <span className="navbar-toggler-icon"></span>
         </button>
-
-        {/* <!-- Collapsible wrapper --> */}
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          {/* <!-- Navbar brand --> */}
-          <Link to="/">
-            <a className="navbar-brand mt-2 mt-lg-0" href="#">
-              <img
-                src="logo5.png"
-                height="75"
-                alt="MDB Logo"
-                loading="lazy"
-              />
-            </a>
-          </Link>
-          {/* <!-- Left links --> */}
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#">Sobre Nosotros</a>
+              <a className="nav-link active" aria-current="page" href="#"></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Servicios</a>
+              <a className="nav-link" href="#nosotros">
+                Sobre Nosotros
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Contactanos</a>
+              <a className="nav-link" href="#ofrecemos">
+                Servicios
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#contactanos">
+                Contáctanos
+              </a>
             </li>
           </ul>
-          {/* <!-- Left links --> */}
         </div>
-        {/* <!-- Collapsible wrapper --> */}
-
-        {/* <!-- Right elements --> */}
-        <div className="d-flex align-items-center">
-          {/* <!-- Icon --> */}
-          {/* <a className="text-reset me-3" href="#">
-            <i className="fas fa-shopping-cart"></i>
-          </a> */}
-          {/* idiomas     */}
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
-              <ul className="navbar-nav">
-                {/* <!-- Icon dropdown --> */}
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-mdb-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i className="flag-united-kingdom flag m-0"></i>
-                  </a>
-                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li>
-                      <a className="dropdown-item" href="#"
-                      ><i className="flag-united-kingdom flag"></i>English
-                        <i className="fa fa-check text-success ms-2"></i></a>
-                    </li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li>
-                      <a className="dropdown-item" href="#"><i className="flag-poland flag"></i>Polski</a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#"><i className="flag-china flag"></i>中文</a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#"><i className="flag-japan flag"></i>日本語</a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#"><i className="flag-germany flag"></i>Deutsch</a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#"><i className="flag-france flag"></i>Français</a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#"><i className="flag-spain flag"></i>Español</a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#"><i className="flag-russia flag"></i>Русский</a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#"><i className="flag-portugal flag"></i>Português</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+        <div className="dropdown">
+          <button
+            type="button"
+            className="btn btn-primary dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            data-bs-auto-close="outside"
+          >
+            Iniciar Sesión
+          </button>
+          <form className="dropdown-menu p-4 dropdown-menu-end">
+            <div className="mb-3">
+              <label for="exampleDropdownFormEmail2" className="form-label">
+                Email address
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="exampleDropdownFormEmail2"
+                placeholder="email@example.com"
+                required
+              />
             </div>
-          </nav>
-          {/* <!-- Notifications --> */}
-          <div className="dropdown">
-            <a
-              className="text-reset me-3 dropdown-toggle hidden-arrow"
-              href="#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-mdb-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i className="fas fa-bell"></i>
-              <span className="badge rounded-pill badge-notification bg-danger">1</span>
-            </a>
-            <ul
-              className="dropdown-menu dropdown-menu-end"
-              aria-labelledby="navbarDropdownMenuLink"
-            >
-              <li>
-                <a className="dropdown-item" href="#">Some news</a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">Another news</a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">Something else here</a>
-              </li>
-            </ul>
-          </div>
-          {/* <!-- Avatar --> */}
-          <div className="dropdown">
-            <Link to="/signin">
-              <a
-                className="dropdown-toggle d-flex align-items-center hidden-arrow"
-                href="#"
-                id="navbarDropdownMenuAvatar"
-                role="button"
-                data-mdb-toggle="dropdown"
-                aria-expanded="true"
-              >
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                  className="rounded-circle"
-                  height="25"
-                  alt="Black and White Portrait of a Man"
-                  loading="lazy"
+            <div className="mb-3">
+              <label for="exampleDropdownFormPassword2" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="exampleDropdownFormPassword2"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <div className="form-check">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="dropdownCheck2"
                 />
-              </a>
-              <ul
-                className="dropdown-menu dropdown-menu-end"
-                aria-labelledby="navbarDropdownMenuAvatar"
-              >
-                <li>
-                  <a className="dropdown-item" href="#">Mi perfil</a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">Ajustes</a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">Cerrar Sesión.</a>
-                </li>
-              </ul>
-            </Link>
-          </div>
+                <label className="form-check-label" for="dropdownCheck2">
+                  Recordar Contraseña
+                </label>
+                <p className="text-center text-muted mt-5 mb-0">
+                  No tienes una Cuenta?{" "}
+                  <a href="#!" className="fw-bold text-body">
+                    <Link to="/register">
+                      <u>Registrate</u>
+                    </Link>
+                  </a>
+                </p>
+                <div className="dropdown">
+                  <a className="dropdown-item text-muted" href="#">
+                    Olvidaste la Contraseña?
+                  </a>
+                </div>
+              </div>
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Sign in
+            </button>
+          </form>
         </div>
       </div>
     </nav>
