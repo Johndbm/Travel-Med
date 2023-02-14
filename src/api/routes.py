@@ -16,3 +16,36 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/user', methods=['GET'])
+def get_users():
+
+    if request.method == "GET" :
+        all_users = User.query.all()
+        user_dictionary = []
+        for user in all_users:
+            user_dictionary.append(user.serialize())
+        print(user_dictionary)
+
+    return jsonify(user_dictionary), 200
+
+@api.route('/user', methods=['POST'])
+def post_users():
+    if request.method == "POST" :
+        body = request.json
+        email = body.get("email", None)
+        password = body.get("password", None)
+        name = body.get("name", None)
+        lastname = body.get("lastname", None)
+        country = body.get("country", None)
+        city = body.get("city", None)
+        state = body.get("state", None)
+        try:
+            if email is None or password is None or name is None or lastname is None or country is None or city is None or state is None:
+                raise Exception("No ingresaste todos los datos",400)
+            user = User(email=email, password=password, name=name, lastname=lastname, country=country, city=city, state=state)
+            db.session.add(user)
+            db.session.commit()
+            return jsonify("message" "User Created!")
+        except Exception as error:
+            return jsonify(error.args[0]),error.args[1]
