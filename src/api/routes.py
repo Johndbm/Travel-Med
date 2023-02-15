@@ -49,3 +49,16 @@ def post_users():
             return jsonify("message" "User Created!")
         except Exception as error:
             return jsonify(error.args[0]),error.args[1]
+
+
+
+@api.route('/pago', methods=['GET']) 
+def get_pagos():
+    response={"mensaje":"Probando pagos"}
+    if request.method == 'GET' :
+        all_payments= Pago.query.all()
+        payment_dictionary = []
+        for payment in all_payment :
+            payment_dictionary.append(payment.serialize())
+        print(payment_dictionary)
+    return jsonify(response),200

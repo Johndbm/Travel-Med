@@ -27,3 +27,28 @@ class User(db.Model):
             "state":self.state,
             # do not serialize the password, its a security breach
         }
+
+
+class Pago(db.Model):
+    id= db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(20), unique= False, nullable= False)
+    id_passport = db.Column(db.String(20), unique=True, nullable=False)
+    payment_method = db.Column(db.String(20), unique=False, nullable = False)
+    confirmation_number = db.Column(db.Integer, unique= True, nullable= False) 
+    transaction_person = db.Column(db.String(20), unique= False, nullable= False)
+    proof_of_payment = db.Column(db.String(20), unique= False, nullable=False)
+
+    def __repr__(self):
+        return f'<Pago {self.user_id}>'
+
+    def serialize(self):
+        return{
+            "user_id":self.user_id,
+            "name": self.name,
+            "id_passport":self.id_passport,
+            "payment_method": self.payment_method,
+            "confirmation_number":self.confirmation_number,
+            "transaction_person": self.transaction_person,
+            "proof_of_payment": self.proof_of_payment,
+
+        }
