@@ -59,7 +59,7 @@ def get_pagos():
     if request.method == 'GET' :
         all_payments= Pago.query.all()
         payment_dictionary = []
-        for payment in all_payment :
+        for payment in all_payments :
             payment_dictionary.append(payment.serialize())
         print(payment_dictionary)
     return jsonify(response),200

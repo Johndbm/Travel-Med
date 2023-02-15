@@ -12,6 +12,7 @@ class User(db.Model):
     city = db.Column(db.String(20), unique=False, nullable=False)
     state = db.Column(db.String(20), unique=False, nullable=False)
     
+    payments = db.relationship('Pago', backref = 'parent', lazy=True)
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -25,13 +26,15 @@ class User(db.Model):
             "country": self.country,
             "city":self.city,
             "state":self.state,
+            
+            "payments": list(map(lambda x: x.serialize(), self.payments))
             # do not serialize the password, its a security breach
         }
 
 
 class Pago(db.Model):
     id= db.Column(db.Integer,primary_key=True)
-    user_id= db.Column(db.Integer, ForeignKey("user.id"))
+    user_id= db.Column(db.Integer, db.ForeignKey("user.id"))
     name = db.Column(db.String(20), unique= False, nullable= False)
     id_passport = db.Column(db.String(20), unique=True, nullable=False)
     payment_method = db.Column(db.String(20), unique=False, nullable = False)
