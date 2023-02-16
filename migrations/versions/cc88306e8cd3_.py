@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 746e0f7f2623
+Revision ID: cc88306e8cd3
 Revises: 
-Create Date: 2023-02-15 15:28:07.516579
+Create Date: 2023-02-16 21:48:59.260817
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '746e0f7f2623'
+revision = 'cc88306e8cd3'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,17 +32,16 @@ def upgrade():
     )
     op.create_table('pago',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.Column('name', sa.String(length=20), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('id_passport', sa.String(length=20), nullable=False),
     sa.Column('payment_method', sa.String(length=20), nullable=False),
     sa.Column('confirmation_number', sa.Integer(), nullable=False),
     sa.Column('transaction_person', sa.String(length=20), nullable=False),
-    sa.Column('proof_of_payment', sa.String(length=20), nullable=False),
+    sa.Column('image_of_payment', sa.String(length=200), nullable=False),
+    sa.Column('image_id', sa.String(length=100), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('confirmation_number'),
-    sa.UniqueConstraint('id_passport')
+    sa.UniqueConstraint('confirmation_number')
     )
     # ### end Alembic commands ###
 

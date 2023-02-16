@@ -62,4 +62,27 @@ def get_pagos():
         for payment in all_payments :
             payment_dictionary.append(payment.serialize())
         print(payment_dictionary)
-    return jsonify(response),200
+    return jsonify(payment_dictionary,response),200
+
+
+@api.route('/pago', methods=['POST'])
+def post_pagos():
+    if request.method == 'POST' :
+        body = request.json
+        name = body.get("name", None)
+        id_passport = body.get("id_passport", None)
+        payment_method = body.get("payment_method", None)
+        confirmation_number = body.get("confirmation_number", None)
+        transaction_person = body.get("transaction_person", None)
+        proof_of_payment = body.get("proof_of_payment",None)
+        try:
+            if name is None or id_passport is None or payment_method is None or confirmation_number is None or transaction_person is None or proof_of_payment is None:
+                raise Exception("Debe ingresar todos los datos", 400)
+            pago= Pago(name=name,id_passport=id_passport,payment_method=payment_method,confirmation_number=confirmation_number,transaction_person=transaction_person,proof_of_payment=proof_of_payment)
+            db.session.add(pago)
+            db.session.commit()
+            return jsonify("message" "El formulario de pago ha sido llenado con exito")
+        except Exception as error:
+            print(error.args)
+            # return jsonify(error.args[0]),error.args[1]
+            return jsonify([]), 500
