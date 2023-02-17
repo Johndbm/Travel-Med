@@ -68,6 +68,7 @@ def get_pagos():
 @api.route('/pago', methods=['POST'])
 def post_pagos():
     if request.method == 'POST' :
+        user_id = 1
         body = request.json
         id_passport = body.get("id_passport", None)
         payment_method = body.get("payment_method", None)
@@ -78,7 +79,7 @@ def post_pagos():
         try:
             if id_passport is None or payment_method is None or confirmation_number is None or transaction_person is None or image_of_payment is None or image_id is None:
                 raise Exception("Debe ingresar todos los datos", 400)
-            pago= Pago(id_passport=id_passport,payment_method=payment_method,confirmation_number=confirmation_number,transaction_person=transaction_person,image_of_payment=image_of_payment,image_id=image_id)
+            pago= Pago(id_passport=id_passport,payment_method=payment_method,confirmation_number=confirmation_number,transaction_person=transaction_person,image_of_payment=image_of_payment,image_id=image_id, user_id=user_id)
             db.session.add(pago)
             db.session.commit()
             return jsonify("message" "El formulario de pago ha sido llenado con exito")
