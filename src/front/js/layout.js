@@ -18,6 +18,7 @@ import { Footer } from "./component/footer";
 import { Signin } from "./pages/signin";
 import { Calendar } from "./pages/calendar";
 
+
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain

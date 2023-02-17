@@ -3,6 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
+from api.models import db, Pago
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
@@ -49,3 +50,40 @@ def post_users():
             return jsonify("message" "User Created!")
         except Exception as error:
             return jsonify(error.args[0]),error.args[1]
+
+
+
+@api.route('/pago', methods=['GET']) 
+def get_pagos():
+    response={"mensaje":"Probando pagos"}
+    if request.method == 'GET' :
+        all_payments= Pago.query.all()
+        payment_dictionary = []
+        for payment in all_payments :
+            payment_dictionary.append(payment.serialize())
+        print(payment_dictionary)
+    return jsonify(payment_dictionary,response),200
+
+
+@api.route('/pago', methods=['POST'])
+def post_pagos():
+    if request.method == 'POST' :
+        user_id = 1
+        body = request.json
+        id_passport = body.get("id_passport", None)
+        payment_method = body.get("payment_method", None)
+        confirmation_number = body.get("confirmation_number", None)
+        transaction_person = body.get("transaction_person", None)
+        image_of_payment = body.get("image_of_payment",None)
+        image_id = body.get("image_id",None)
+        try:
+            if id_passport is None or payment_method is None or confirmation_number is None or transaction_person is None or image_of_payment is None or image_id is None:
+                raise Exception("Debe ingresar todos los datos", 400)
+            pago= Pago(id_passport=id_passport,payment_method=payment_method,confirmation_number=confirmation_number,transaction_person=transaction_person,image_of_payment=image_of_payment,image_id=image_id, user_id=user_id)
+            db.session.add(pago)
+            db.session.commit()
+            return jsonify("message" "El formulario de pago ha sido llenado con exito")
+        except Exception as error:
+            print(error.args)
+            # return jsonify(error.args[0]),error.args[1]
+            return jsonify([]), 500

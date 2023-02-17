@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { Calendar } from "./calendar";
 
 export const Pago = () => {
@@ -12,7 +11,8 @@ export const Pago = () => {
       title: "Pago Exitoso",
       text: "Revise su email para el recibo",
       footer:
-        '<a href="/calendar" class="btn btn-success">Gracias por confiar en nosotros!💋</a>',
+        '<a href="/calendar" class="btn btn-success">ok</a>',
+        
       showConfirmButton: false,
     });
     setShowCalendar(true);
