@@ -34,7 +34,7 @@ class User(db.Model):
 
 class Pago(db.Model):
     id= db.Column(db.Integer,primary_key=True)
-    user_id= db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    user_id= db.Column(db.Integer, db.ForeignKey("user.id"),nullable=False)
     id_passport = db.Column(db.String(20), unique=False, nullable=False)
     payment_method = db.Column(db.String(20), unique=False, nullable = False)
     confirmation_number = db.Column(db.Integer, unique= True, nullable= False) 
