@@ -69,16 +69,16 @@ def get_pagos():
 def post_pagos():
     if request.method == 'POST' :
         body = request.json
-        name = body.get("name", None)
         id_passport = body.get("id_passport", None)
         payment_method = body.get("payment_method", None)
         confirmation_number = body.get("confirmation_number", None)
         transaction_person = body.get("transaction_person", None)
-        proof_of_payment = body.get("proof_of_payment",None)
+        image_of_payment = body.get("image_of_payment",None)
+        image_id = body.get("image_id",None)
         try:
-            if name is None or id_passport is None or payment_method is None or confirmation_number is None or transaction_person is None or proof_of_payment is None:
+            if id_passport is None or payment_method is None or confirmation_number is None or transaction_person is None or image_of_payment is None or image_id is None:
                 raise Exception("Debe ingresar todos los datos", 400)
-            pago= Pago(name=name,id_passport=id_passport,payment_method=payment_method,confirmation_number=confirmation_number,transaction_person=transaction_person,proof_of_payment=proof_of_payment)
+            pago= Pago(id_passport=id_passport,payment_method=payment_method,confirmation_number=confirmation_number,transaction_person=transaction_person,image_of_payment=image_of_payment,image_id=image_id)
             db.session.add(pago)
             db.session.commit()
             return jsonify("message" "El formulario de pago ha sido llenado con exito")
