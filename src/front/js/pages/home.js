@@ -9,6 +9,8 @@ import doctor4 from "../../img/doctora4def.jpg";
 import paciente1 from "../../img/paciente-mujer.jpg";
 import paciente4 from "../../img/Paciente-Feliz.jpg";
 
+
+
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
