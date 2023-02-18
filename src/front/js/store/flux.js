@@ -17,6 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       // Use getActions to call a function within a fuction
+
       register: async (
         name,
         lastname,
@@ -55,6 +56,44 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log(error);
         }
       },
+
+      pago: async (
+        user_id,
+        id_passport,
+        payment_method,
+        confirmation_number,
+        transaction_person,
+        image_of_payment,
+        image_id
+      ) => {
+        const options = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user_id: user_id,
+            id_passport: id_passport,
+            payment_method: payment_method,
+            confirmation_number: confirmation_number,
+            transaction_person: transaction_person,
+            image_of_payment: image_of_payment,
+            image_id: image_id,
+          }),
+        };
+        try {
+          const response = await fetch(
+            "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us86.gitpod.io/api/pago",
+            options
+          );
+          if (!response.ok) {
+            alert("Error en el formulario, por favor verifique los datos");
+          }
+          const data = await response.json;
+          console.log(data);
+        } catch (error) {
+          console.log(error);
+        }
+      },
+
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },
