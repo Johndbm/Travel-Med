@@ -106,3 +106,43 @@ def post_pagos():
             print(error.args)
             # return jsonify(error.args[0]),error.args[1]
             return jsonify([]), 500
+
+            @api.route('/historia', methods=['GET']) 
+def get_historias():
+    response={"mensaje":"historia medica"}
+    if request.method == 'GET' :
+        historias= Historia.query.all()
+        historia = []
+        for historia in all_historias :
+            historia.append(historia.serialize())
+        print(historia)
+    return jsonify(historia,response),200
+
+
+@api.route('/historia', methods=['POST'])
+def post_historias():
+    if request.method == 'POST' :
+        user_id = 1
+        body = request.json
+        name = body.get("name", None)
+        edad = body.get("edad", None)
+        peso = body.get("peso", None)
+        telef = body.get("telef", None)
+        correo = body.get("correo",None)
+        direccion = body.get("direccion",None)
+        sexo = body.get("sexo",None)
+        alt = body.get("alt",None)
+        cirugiasAnt = body.get("cirugiasAnt",None)
+        alergias = body.get("alergias",None)
+        obs = body.get("obs",None)
+        try:
+            if historia is None or name is None or edad is None or peso is None or telef is None or correo is None or direccion is None or sexo is None or alt is None or cirugiasAnt is None or alergias is None or obs in None:
+                raise Exception("Debe ingresar todos los datos", 400)
+            historia = Historia(name,edad,peso,telef,correo,direccion,sexo,alt,cirugiasAnt,alergias,obs)
+            db.session.add(historia)
+            db.session.commit()
+            return jsonify("message" "La historia medica ha sido llenada con exito")
+        except Exception as error:
+            print(error.args)
+            # return jsonify(error.args[0]),error.args[1]
+            return jsonify([]), 500
