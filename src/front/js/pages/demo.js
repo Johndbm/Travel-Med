@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Calendar } from "./calendar";
+
 
 import { Context } from "../store/appContext";
 
@@ -40,7 +40,6 @@ export const Demo = () => {
         })}
       </ul>
       <br />
-      <Calendar />
       <Link to="/">
         <button className="btn btn-primary">Back home</button>
       </Link>

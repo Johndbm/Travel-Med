@@ -1,22 +1,32 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { Calendar } from "./calendar";
 
 export const Pago = () => {
-  const [showCalendar, setShowCalendar] = useState(false);
-  const Navigate = useNavigate();
-  function Success() {
-    Swal.fire({
-      icon: "success",
-      title: "Pago Exitoso",
-      text: "Revise su email para el recibo",
-      footer:
-        '<a href="/calendar" class="btn btn-success">Gracias por confiar en nosotros!💋</a>',
-      showConfirmButton: false,
-    });
-    setShowCalendar(true);
-  }
+  const [user_id, setUser_id] = useState("");
+  const [id_passport, setId_passport] = useState("");
+  const [payment_method, setPayment_method] = useState("");
+  const [confirmation_number, setConfirmation_number] = useState("");
+  const [transaction_person, setTransaction_person] = useState("");
+  const [image_of_payment, setImage_of_payment] = useState("");
+  // const [image_id, setImage_id] = useState("");
+
+  const { actions } = useContext(Context);
+  const pago = (event) => {
+    event.preventDefault();
+    actions.pago(
+      user_id,
+      id_passport,
+      payment_method,
+      confirmation_number,
+      transaction_person,
+      image_of_payment
+      // image_id
+    );
+    console.log(Text);
+  };
+
   return (
     <>
       <h1 className="d-flex justify-content-center my-5">Formulario de pago</h1>
@@ -43,11 +53,7 @@ export const Pago = () => {
 
           {/* Formulario de pago */}
           <div className="col">
-            <form
-              onSubmit={(event) => {
-                event.preventDefault();
-              }}
-            >
+            <form onSubmit={pago}>
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label for="exampleNombre" className="form-label">
@@ -58,10 +64,11 @@ export const Pago = () => {
                     className="form-control"
                     id="exampleNombre"
                     required
+                    value={user_id}
+                    onChange={(event) => setUser_id(event.target.value)}
                   />
                 </div>
               </div>
-
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label for="exampleInputEmail1" className="form-label">
@@ -73,20 +80,24 @@ export const Pago = () => {
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     required
+                    value={id_passport}
+                    onChange={(event) => setId_passport(event.target.value)}
                   />
                   <div id="identificacion" className="form-text">
                     Nunca compartiremos tus datos.
                   </div>
                 </div>
               </div>
-
-              <h5>Metodo de pago</h5>
+              <h5>Metodo de pago</h5>{" "}
+              {/*hay un problema con los radio buttons agregandoles la propiedad onChange, arreglar y despues borrar este comentario*/}
               <div className="form-check">
                 <input
                   className="form-check-input"
                   type="radio"
                   name="flexRadioDefault"
                   id="flexRadioDefault1"
+                  value={payment_method}
+                  onChange={(event) => setPayment_method(event.target.value)}
                 />
                 <label className="form-check-label" for="flexRadioDefault1">
                   PayPal
@@ -98,26 +109,27 @@ export const Pago = () => {
                   type="radio"
                   name="flexRadioDefault"
                   id="flexRadioDefault2"
-                  checked
+                  value={payment_method}
+                  onChange={(event) => setPayment_method(event.target.value)}
                 />
                 <label className="form-check-label" for="flexRadioDefault2">
                   Transferencia
                 </label>
               </div>
-
               <div className="form-check">
                 <input
                   className="form-check-input"
                   type="radio"
                   name="flexRadioDefault"
                   id="flexRadioDefault2"
-                  checked
+                  // checked
+                  value={payment_method}
+                  onChange={(event) => setPayment_method(event.target.value)}
                 />
                 <label className="form-check-label" for="flexRadioDefault2">
                   Zelle
                 </label>
               </div>
-
               <div className="col-md-3">
                 <label for="validationDefault05" className="form-label">
                   Numero de confirmacion
@@ -127,9 +139,12 @@ export const Pago = () => {
                   className="form-control"
                   id="validationDefault05"
                   required
+                  value={confirmation_number}
+                  onChange={(event) =>
+                    setConfirmation_number(event.target.value)
+                  }
                 />
               </div>
-
               <div className="col-md-3">
                 <label for="validationDefault05" className="form-label">
                   Nombre de quien hizo la transaccion
@@ -139,20 +154,25 @@ export const Pago = () => {
                   className="form-control"
                   id="validationDefault05"
                   required
+                  value={transaction_person}
+                  onChange={(event) =>
+                    setTransaction_person(event.target.value)
+                  }
                 />
               </div>
-
               <div className="col-md-6">
                 <label for="formFile" className="form-label">
                   Adjuntar comprobante de pago
                 </label>
-                <input className="form-control" type="file" id="formFile" />
+                <input
+                  className="form-control"
+                  type="file"
+                  id="formFile"
+                  value={image_of_payment}
+                  onChange={(event) => setImage_of_payment(event.target.value)}
+                />
               </div>
-              <button
-                type="submit"
-                className="btn btn-primary mb-5 mt-3"
-                onClick={Success}
-              >
+              <button type="submit" className="btn btn-primary mb-5 mt-3">
                 Enviar
               </button>
             </form>

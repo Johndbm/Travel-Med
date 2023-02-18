@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
+import { Conocenos } from "./pages/conocenos";
 import { Home } from "./pages/home";
 import { Historia } from "./pages/historia";
 import { Demo } from "./pages/demo";
@@ -16,6 +17,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Signin } from "./pages/signin";
 import { Calendar } from "./pages/calendar";
+
 
 //create your first component
 const Layout = () => {
@@ -39,6 +41,7 @@ const Layout = () => {
             <Route element={<Pago />} path="/pago" />
             <Route element={<Calendar />} path="/calendar" />
             <Route element={<Historia />} path="/historia" />
+            <Route element={<Conocenos />} path="/conocenos" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />
