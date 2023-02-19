@@ -88,7 +88,7 @@ def post_pagos():
             # return jsonify(error.args[0]),error.args[1]
             return jsonify([]), 500
 
-            @api.route('/historia', methods=['GET']) 
+@api.route('/historia', methods=['GET']) 
 def get_historias():
     response={"mensaje":"historia medica"}
     if request.method == 'GET' :

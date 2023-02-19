@@ -13,6 +13,7 @@ class User(db.Model):
     state = db.Column(db.String(20), unique=False, nullable=False)
     
     payments = db.relationship('Pago', backref = 'user',uselist=True)
+    historys = db.relationship('Historia', backref = 'user', uselist=True)
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -28,6 +29,7 @@ class User(db.Model):
             "state":self.state,
             
             "payments": list(map(lambda x: x.serialize(), self.payments))
+            "historys": list(map(lambda x: x.serialize(), self.historys))
             # do not serialize the password, its a security breach
         }
 
@@ -54,5 +56,42 @@ class Pago(db.Model):
             "transaction_person": self.transaction_person,
             "image_of_payment": self.image_of_payment,
             "image_id": self.image_id
+
+        }
+
+
+class Historia(db.Model):
+    user_id= db.Column(db.Integer, db.ForeignKey("user.id"),nullable=False)
+    body = db.Column(db.String())
+    name = db.Column(db.String())
+    edad = db.Column(db.Integer, nullable=False)
+    peso = db.Column(db.Integer, nullable=False)
+    telef = db.Column(db.Integer, nullable=False)
+    correo = db.Column(db.String())
+    direccion = db.Column(db.String())
+    sexo = db.Column(db.String())
+    alt = db.Column(db.String())
+    cirugiasAnt = db.Column(db.String())
+    alergias = db.Column(db.String())
+    obs = db.Column(db.String())
+
+    def __repr__(self):
+        return f'<Historia {self.user_id}>'
+
+    def serialize(self):
+        return{
+            "user_id" : self.user_id
+            "body" : self.body
+            "name" : self.name
+            "edad" : self.edad
+            "peso" : self.peso
+            "telef" : self.telef
+            "correo" : self.correo
+            "direccion" : self.direccion
+            "sexo" : self.sexo
+            "alt" : self.alt
+            "cirugiasAnt" : self.cirugiasAnt
+            "alergias" : self.alergias
+            "obs" : self.obs
 
         }
