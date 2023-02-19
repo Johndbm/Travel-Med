@@ -89,46 +89,49 @@ export const Pago = () => {
                 </div>
               </div>
               <h5>Metodo de pago</h5>{" "}
-              {/*hay un problema con los radio buttons agregandoles la propiedad onChange, arreglar y despues borrar este comentario*/}
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                  value={payment_method}
-                  onChange={(event) => setPayment_method(event.target.value)}
-                />
-                <label className="form-check-label" for="flexRadioDefault1">
-                  PayPal
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                  value={payment_method}
-                  onChange={(event) => setPayment_method(event.target.value)}
-                />
-                <label className="form-check-label" for="flexRadioDefault2">
-                  Transferencia
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                  // checked
-                  value={payment_method}
-                  onChange={(event) => setPayment_method(event.target.value)}
-                />
-                <label className="form-check-label" for="flexRadioDefault2">
-                  Zelle
-                </label>
+              <div
+                className=""
+                id="parentMetodoDePago"
+                value={payment_method}
+                onChange={(event) => setPayment_method(event.target.value)}
+              >
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                    value="PayPal"
+                  />
+                  <label className="form-check-label" for="flexRadioDefault1">
+                    PayPal
+                  </label>
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault2"
+                    value="Transferencia"
+                  />
+                  <label className="form-check-label" for="flexRadioDefault2">
+                    Transferencia
+                  </label>
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault2"
+                    value="Zelle"
+                    // checked
+                  />
+                  <label className="form-check-label" for="flexRadioDefault2">
+                    Zelle
+                  </label>
+                </div>
               </div>
               <div className="col-md-3">
                 <label for="validationDefault05" className="form-label">
