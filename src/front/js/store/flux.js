@@ -44,7 +44,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const response = await fetch(
-            "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us86.gitpod.io/api/user",
+            "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us87.gitpod.io/api/user",
             options
           );
           if (!response.ok) {
@@ -81,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const response = await fetch(
-            "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us86.gitpod.io/api/pago",
+            "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us87.gitpod.io/api/pago",
             options
           );
           if (!response.ok) {
