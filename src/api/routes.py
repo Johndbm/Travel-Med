@@ -86,7 +86,7 @@ def get_pagos():
 @api.route('/pago', methods=['POST'])
 def post_pagos():
     if request.method == 'POST' :
-        user_id = 1
+        user_id = body.get("user_id", None)
         body = request.json
         id_passport = body.get("id_passport", None)
         payment_method = body.get("payment_method", None)
