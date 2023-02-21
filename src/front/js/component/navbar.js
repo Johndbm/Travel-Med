@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ImageUrl from "../../img/logo5.png";
-import { Login } from "./login";
+import { Navbuttons } from "./navbuttons";
 
 export const Navbar = () => {
   return (
@@ -45,7 +45,7 @@ export const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Login />
+        <Navbuttons />
       </div>
     </nav>
   );

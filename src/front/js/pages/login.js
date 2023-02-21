@@ -14,17 +14,9 @@ export const Login = () => {
   };
 
   return (
-    <div className="dropdown">
-      <button
-        type="button"
-        className="btn btn-primary dropdown-toggle"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        data-bs-auto-close="outside"
-      >
-        Iniciar Sesión
-      </button>
-      <form className="dropdown-menu p-4 dropdown-menu-end">
+    <div className="container">
+      <h1 className="d-flex justify-content-center my-5">Inicia Sesión</h1>
+      <form className="p-4">
         <div className="mb-3">
           <label for="exampleDropdownFormEmail2" className="form-label">
             Email address
