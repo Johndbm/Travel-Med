@@ -3,7 +3,15 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 export const Login = () => {
-  const [email, setEmail] = useState
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { store, actions } = useContext(Context);
+  const login = (event) => {
+    event.preventDefault();
+    actions.login(email, password);
+    console.log(Text);
+  };
 
   return (
     <div className="dropdown">
@@ -27,6 +35,8 @@ export const Login = () => {
             id="exampleDropdownFormEmail2"
             placeholder="email@example.com"
             required
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </div>
         <div className="mb-3">
@@ -39,6 +49,8 @@ export const Login = () => {
             id="exampleDropdownFormPassword2"
             placeholder="Password"
             required
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
           />
         </div>
         <div className="mb-3">

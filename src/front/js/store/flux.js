@@ -57,6 +57,34 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      login: async (email, password) => {
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        };
+        try {
+          const response = await fetch(
+            "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us87.gitpod.io/api/token",
+            options
+          );
+          if (!response.ok) {
+            alert(
+              "Error en el usuario o contraseña, por favor intente nuevamente"
+            );
+          }
+          const data = await response.json;
+          console.log(data);
+        } catch (error) {
+          console.log(error);
+        }
+      },
+
       pago: async (
         user_id,
         id_passport,
