@@ -1,7 +1,27 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 export const Historia = () => {
+    const [name, setName] = useState("");
+    const [edad, setEdad] = useState("");
+    const [peso, setPeso] = useState("");
+    const [telef, setTelef] = useState("");
+    const [correo, setCorreo] = useState("");
+    const [direccion, setDireccion] = useState("");
+    const [sexo, setSexo] = useState("");
+    const [alt, setAlt] = useState("");
+    const [cirugiasAnt, setCirugiasAnt] = useState("");
+    const [alergias, setAlergias] = useState("");
+    const [obs, setObs] = useState("");
+
+    const { store, actions } = useContext(Context);
+    const historia = (event) => {
+      event.preventDefault();
+      actions.historia(name, edad, peso, telef, correo, direccion, sexo, alt, cirugiasAnt, alergias, obs);
+      console.log(Text);
+    };
+  
   return (
     <>
       <h1 className="d-flex justify-content-center mt-5 mb-5">Historia Medica</h1>
