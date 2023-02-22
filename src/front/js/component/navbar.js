@@ -47,7 +47,8 @@ export const Navbar = () => {
               </li>
             </ul>
           </div>
-          <Navprofile />
+          <Navbuttons />
+          {/* <Navprofile /> */}
         </div>
       </div>
     </nav>
