@@ -6,6 +6,32 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // fetch token function for login
+  const handleClick = () => {
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    };
+
+    fetch(
+      "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us87.gitpod.io/api/token",
+      options
+    );
+    try {
+      if (response == 200) return response.json();
+      else alert("Hay un error con el token");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // end of fetch token function.... checking flux.js
+
   const { store, actions } = useContext(Context);
   const login = (event) => {
     event.preventDefault();
@@ -70,7 +96,7 @@ export const Login = () => {
             </div>
           </div>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" onClick={handleClick}>
           Sign in
         </button>
       </form>
