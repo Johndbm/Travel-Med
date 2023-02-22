@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ImageUrl from "../../img/logo5.png";
 import { Navbuttons } from "./navbuttons";
 import { Navprofile } from "./navprofile";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store } = useContext(Context);
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -47,8 +50,8 @@ export const Navbar = () => {
               </li>
             </ul>
           </div>
-          <Navbuttons />
-          {/* <Navprofile /> */}
+          {store.token == null && <Navbuttons />}
+          {store.token !== null && <Navprofile />}
         </div>
       </div>
     </nav>
