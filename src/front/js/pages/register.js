@@ -111,6 +111,14 @@ export const Register = () => {
             onChange={(event) => setState(event.target.value)}
           />
         </div>
+        <p className="text-center text-muted mt-5 mb-0">
+              Ya tienes una Cuenta?{" "}
+              <a href="#!" className="fw-bold text-body">
+                <Link to="/register">
+                  <u>Inicia Sesión</u>
+                </Link>
+              </a>
+            </p>
         <div className="col-12">
           <button type="submit" className="btn btn-primary my-5">
             Sign in

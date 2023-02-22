@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
-export const Login = () => {
+export const Navbuttons = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,9 +14,18 @@ export const Login = () => {
   };
 
   return (
-    <div className="container">
-      <h1 className="d-flex justify-content-center my-5">Inicia Sesión</h1>
-      <form className="p-4">
+    <div className="dropdown">
+      <Link to="/login">
+        <button type="button" className="btn btn-outline-light me-2">
+          Login
+        </button>
+      </Link>
+      <Link to="/register">
+        <button type="button" className="btn btn-primary">
+          Sign-up
+        </button>
+      </Link>
+      <form className="dropdown-menu p-4 dropdown-menu-end">
         <div className="mb-3">
           <label for="exampleDropdownFormEmail2" className="form-label">
             Email address

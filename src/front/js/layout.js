@@ -9,7 +9,6 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Especialistas } from "./pages/especialistas.js";
 import { Pago } from "./pages/pago.js";
-import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import injectContext from "./store/appContext";
 
@@ -17,7 +16,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Signin } from "./pages/signin";
 import { Calendar } from "./pages/calendar";
-
+import { Login } from "./pages/login";
 
 //create your first component
 const Layout = () => {
