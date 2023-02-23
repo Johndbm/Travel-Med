@@ -10,22 +10,21 @@ export const Pago = () => {
   const [confirmation_number, setConfirmation_number] = useState("");
   const [transaction_person, setTransaction_person] = useState("");
   const [image_of_payment, setImage_of_payment] = useState("");
-  // const [image_id, setImage_id] = useState("");
+ 
 
   const { actions } = useContext(Context);
 
   const pago = (event) => {
     event.preventDefault();
 
-    const formData = new FormData()
+    const formData = new FormData();
+    formData.append("id_passport", id_passport);
+    formData.append("payment_method", payment_method);
+    formData.append("confirmation_number", confirmation_number);
+    formData.append("transaction_person", transaction_person);
+    formData.append("image_of_payment", image_of_payment);
 
-    formData.append("payment_method", payment_method)
-    formData.append("confirmation_number", confirmation_number)
-    formData.append("transaction_person", transaction_person)
-    formData.append("image_of_payment", image_of_payment)
-
-    actions.pago(formData)
-
+    actions.pago(formData);
 
     // actions.pago(
     //   user_id,
@@ -67,19 +66,7 @@ export const Pago = () => {
           <div className="col">
             <form onSubmit={pago}>
               <div className="row">
-                <div className="col-md-6 mb-3">
-                  <label htmlFor="exampleNombre" className="form-label">
-                    Nombres
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="exampleNombre"
-                    required
-                    value={user_id}
-                    onChange={(event) => setUser_id(event.target.value)}
-                  />
-                </div>
+                <div className="col-md-6 mb-3"></div>
               </div>
               <div className="row">
                 <div className="col-md-6 mb-3">
@@ -100,7 +87,7 @@ export const Pago = () => {
                   </div>
                 </div>
               </div>
-              <h5>Metodo de pago</h5>{" "}
+              <h5>Metodo de pago</h5>
               <div
                 className=""
                 id="parentMetodoDePago"
@@ -115,7 +102,10 @@ export const Pago = () => {
                     id="flexRadioDefault1"
                     value="PayPal"
                   />
-                  <label className="form-check-label" htmlFor="flexRadioDefault1">
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexRadioDefault1"
+                  >
                     PayPal
                   </label>
                 </div>
@@ -127,7 +117,10 @@ export const Pago = () => {
                     id="flexRadioDefault2"
                     value="Transferencia"
                   />
-                  <label className="form-check-label" htmlFor="flexRadioDefault2">
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexRadioDefault2"
+                  >
                     Transferencia
                   </label>
                 </div>
@@ -136,11 +129,14 @@ export const Pago = () => {
                     className="form-check-input"
                     type="radio"
                     name="flexRadioDefault"
-                    id="flexRadioDefault2"
+                    id="flexRadioDefault3"
                     value="Zelle"
-                  // checked
+                    // checked
                   />
-                  <label className="form-check-label" htmlFor="flexRadioDefault2">
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexRadioDefault3"
+                  >
                     Zelle
                   </label>
                 </div>
@@ -167,7 +163,7 @@ export const Pago = () => {
                 <input
                   type="text"
                   className="form-control"
-                  id="validationDefault05"
+                  id="validationDefault25"
                   required
                   value={transaction_person}
                   onChange={(event) =>

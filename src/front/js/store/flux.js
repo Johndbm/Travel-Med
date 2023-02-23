@@ -148,8 +148,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           if (!response.ok) {
             alert("Error en el formulario, por favor verifique los datos");
           }
-          // const data = await response.json;
-          // console.log(data);
+          //  const data = await response.json;
+          //  console.log(data);
         } catch (error) {
           console.log(error);
         }
