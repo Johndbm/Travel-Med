@@ -70,6 +70,7 @@ class Historia(db.Model):
     telef = db.Column(db.Integer, nullable=False)
     correo = db.Column(db.String())
     direccion = db.Column(db.String())
+    paisRes = db.Column(db.String())
     sexo = db.Column(db.String())
     alt = db.Column(db.String())
     cirugiasAnt = db.Column(db.String())
@@ -89,6 +90,7 @@ class Historia(db.Model):
             "telef": self.telef,
             "correo": self.correo,
             "direccion": self.direccion,
+            "paisRes": self.paisRes,
             "sexo": self.sexo,
             "alt": self.alt,
             "cirugiasAnt": self.cirugiasAnt,

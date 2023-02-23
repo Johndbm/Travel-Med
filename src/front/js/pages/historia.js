@@ -8,6 +8,7 @@ export const Historia = () => {
     const [peso, setPeso] = useState("");
     const [telef, setTelef] = useState("");
     const [correo, setCorreo] = useState("");
+    const [paisRes, setPaisRes] = useState("");
     const [direccion, setDireccion] = useState("");
     const [sexo, setSexo] = useState("");
     const [alt, setAlt] = useState("");
@@ -29,48 +30,48 @@ export const Historia = () => {
         <form className="row g-3">
           <div className="col-md-4">
             <label for="validationDefault01" className="form-label">Nombre y Apellido</label>
-            <input type="text" className="form-control" id="validationDefault01" required />
+            <input type="text" className="form-control" id="validationDefault01" required onChange={(event)=>setName(event.target.value)}value={name}       />
           </div>
           <div className="col-md-1">
             <label for="validationDefault02" className="form-label">Edad</label>
-            <input type="text" className="form-control" id="validationDefault02" required />
+            <input type="text" className="form-control" id="validationDefault02" required onChange={(event)=>setEdad(event.target.value)}value={edad}/>
           </div>
           <div className="col-md-1">
             <label for="validationDefault05" className="form-label">Peso</label>
-            <input type="text" className="form-control" id="validationDefault05" required />
+            <input type="text" className="form-control" id="validationDefault05" required onChange={(event)=>setPeso(event.target.value)}value={peso}/>
           </div>
           <div className="col-md-3">
             <label for="validationDefaultUsername" className="form-label">Pais de Residencia</label>
             <div className="input-group">
-              <input type="text" className="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required />
+              <input type="text" className="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required onChange={(event)=>setPaisRes(event.target.value)}value={paisRes}/>
             </div>
           </div>
           <div className="col-md-2">
             <label for="validationDefaultUsername" className="form-label">Numero Telefonico</label>
             <div className="input-group">
-              <input type="text" className="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required />
+              <input type="text" className="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required onChange={(event)=>setTelef(event.target.value)}value={telef}/>
             </div>
           </div>
           <div className="col-md-3">
             <label for="validationDefaultUsername" className="form-label">Correo Electronico</label>
             <div className="input-group">
-              <input type="text" className="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required />
+              <input type="text" className="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required onChange={(event)=>setCorreo(event.target.value)}value={correo}/>
             </div>
           </div>
           <div className="col-md-6">
             <label for="validationDefault03" className="form-label">Direccion de hab</label>
-            <input type="text" className="form-control" id="validationDefault03" required />
+            <input type="text" className="form-control" id="validationDefault03" required onChange={(event)=>setDireccion(event.target.value)}value={direccion}/>
           </div>
           <div className="col-md-1">
             <label for="validationDefault04" className="form-label">sexo</label>
-            <select className="form-select" id="validationDefault04" required>
+            <select className="form-select" id="validationDefault04" required onChange={(event)=>setSexo(event.target.value)}value={sexo}>
               <option selected disabled value="">FEM</option>
               <option>MASC</option>
             </select>
           </div>
           <div className="col-md-1">
             <label for="validationDefault05" className="form-label">Altura</label>
-            <input type="text" className="form-control" id="validationDefault05" required />
+            <input type="text" className="form-control" id="validationDefault05" required onChange={(event)=>setAlt(event.target.value)}value={alt}/>
           </div>
           <h5 className="d-flex justify-content-center">Se ha realizado cirugias anteriormente?</h5>
           <div className="form-check form-check-inline d-flex justify-content-center">

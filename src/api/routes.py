@@ -129,6 +129,7 @@ def post_historias():
         peso = body.get("peso", None)
         telef = body.get("telef", None)
         correo = body.get("correo",None)
+        paisRes = body.get("paisRes",None)
         direccion = body.get("direccion",None)
         sexo = body.get("sexo",None)
         alt = body.get("alt",None)
