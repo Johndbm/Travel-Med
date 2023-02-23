@@ -1,6 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      token: sessionStorage.getItem("token") || null,
+
       message: null,
       demo: [
         {
@@ -44,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const response = await fetch(
-            "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us87.gitpod.io/api/user",
+            `${process.env.BACKEND_URL}/api/user`,
             options
           );
           if (!response.ok) {
@@ -58,6 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       login: async (email, password) => {
+        // console.log(email, password);
         const options = {
           method: "POST",
           headers: {
@@ -70,19 +73,23 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const response = await fetch(
-            "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us87.gitpod.io/api/token",
+            `${process.env.BACKEND_URL}/api/token`,
             options
           );
           if (!response.ok) {
-            alert(
-              "Error en el usuario o contraseña, por favor intente nuevamente"
-            );
+            return false;
           }
-          const data = await response.json;
-          console.log(data);
+          const data = await response.json();
+          setStore({ token: data.access_token });
+          sessionStorage.setItem("token", data.access_token);
+          return true;
         } catch (error) {
           console.log(error);
         }
+      },
+      logout: async () => {
+        setStore({ token: null });
+        sessionStorage.removeItem("token");
       },
 
       pago: async (
@@ -109,7 +116,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const response = await fetch(
-            "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us87.gitpod.io/api/pago",
+            `${process.env.BACKEND_URL}/api/user`,
             options
           );
           if (!response.ok) {

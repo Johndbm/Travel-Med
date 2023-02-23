@@ -4,15 +4,7 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 export const Navprofile = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const { store, actions } = useContext(Context);
-  const login = (event) => {
-    event.preventDefault();
-    actions.login(email, password);
-    console.log(Text);
-  };
 
   return (
     <div className="dropdown text-end">
@@ -53,7 +45,11 @@ export const Navprofile = () => {
           <hr className="dropdown-divider" />
         </li>
         <li>
-          <a className="dropdown-item" href="#">
+          <a
+            className="dropdown-item"
+            href="#"
+            onClick={() => actions.logout()}
+          >
             Sign out
           </a>
         </li>
