@@ -13,18 +13,30 @@ export const Pago = () => {
   // const [image_id, setImage_id] = useState("");
 
   const { actions } = useContext(Context);
+
   const pago = (event) => {
     event.preventDefault();
-    actions.pago(
-      user_id,
-      id_passport,
-      payment_method,
-      confirmation_number,
-      transaction_person,
-      image_of_payment
-      // image_id
-    );
-    console.log(Text);
+
+    const formData = new FormData()
+
+    formData.append("payment_method", payment_method)
+    formData.append("confirmation_number", confirmation_number)
+    formData.append("transaction_person", transaction_person)
+    formData.append("image_of_payment", image_of_payment)
+
+    actions.pago(formData)
+
+
+    // actions.pago(
+    //   user_id,
+    //   id_passport,
+    //   payment_method,
+    //   confirmation_number,
+    //   transaction_person,
+    //   image_of_payment
+    //   // image_id
+    // );
+    // console.log(Text);
   };
 
   return (
@@ -56,7 +68,7 @@ export const Pago = () => {
             <form onSubmit={pago}>
               <div className="row">
                 <div className="col-md-6 mb-3">
-                  <label for="exampleNombre" className="form-label">
+                  <label htmlFor="exampleNombre" className="form-label">
                     Nombres
                   </label>
                   <input
@@ -71,7 +83,7 @@ export const Pago = () => {
               </div>
               <div className="row">
                 <div className="col-md-6 mb-3">
-                  <label for="exampleInputEmail1" className="form-label">
+                  <label htmlFor="exampleInputEmail1" className="form-label">
                     ID o pasaporte
                   </label>
                   <input
@@ -103,7 +115,7 @@ export const Pago = () => {
                     id="flexRadioDefault1"
                     value="PayPal"
                   />
-                  <label className="form-check-label" for="flexRadioDefault1">
+                  <label className="form-check-label" htmlFor="flexRadioDefault1">
                     PayPal
                   </label>
                 </div>
@@ -115,7 +127,7 @@ export const Pago = () => {
                     id="flexRadioDefault2"
                     value="Transferencia"
                   />
-                  <label className="form-check-label" for="flexRadioDefault2">
+                  <label className="form-check-label" htmlFor="flexRadioDefault2">
                     Transferencia
                   </label>
                 </div>
@@ -126,15 +138,15 @@ export const Pago = () => {
                     name="flexRadioDefault"
                     id="flexRadioDefault2"
                     value="Zelle"
-                    // checked
+                  // checked
                   />
-                  <label className="form-check-label" for="flexRadioDefault2">
+                  <label className="form-check-label" htmlFor="flexRadioDefault2">
                     Zelle
                   </label>
                 </div>
               </div>
               <div className="col-md-3">
-                <label for="validationDefault05" className="form-label">
+                <label htmlFor="validationDefault05" className="form-label">
                   Numero de confirmacion
                 </label>
                 <input
@@ -149,7 +161,7 @@ export const Pago = () => {
                 />
               </div>
               <div className="col-md-3">
-                <label for="validationDefault05" className="form-label">
+                <label htmlFor="validationDefault05" className="form-label">
                   Nombre de quien hizo la transaccion
                 </label>
                 <input
@@ -164,7 +176,7 @@ export const Pago = () => {
                 />
               </div>
               <div className="col-md-6">
-                <label for="formFile" className="form-label">
+                <label htmlFor="formFile" className="form-label">
                   Adjuntar comprobante de pago
                 </label>
                 <input

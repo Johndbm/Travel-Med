@@ -92,38 +92,64 @@ const getState = ({ getStore, getActions, setStore }) => {
         sessionStorage.removeItem("token");
       },
 
-      pago: async (
-        user_id,
-        id_passport,
-        payment_method,
-        confirmation_number,
-        transaction_person,
-        image_of_payment,
-        image_id
-      ) => {
+      login: async (email, password) => {
+        // console.log(email, password);
         const options = {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({
-            user_id: user_id,
-            id_passport: id_passport,
-            payment_method: payment_method,
-            confirmation_number: confirmation_number,
-            transaction_person: transaction_person,
-            image_of_payment: image_of_payment,
-            image_id: image_id,
+            email: email,
+            password: password,
           }),
         };
+
         try {
           const response = await fetch(
-            `${process.env.BACKEND_URL}/api/user`,
+            `${process.env.BACKEND_URL}/api/token`,
+            options
+          );
+          if (!response.ok) {
+            return false;
+          }
+          const data = await response.json();
+          setStore({ token: data.access_token });
+          sessionStorage.setItem("token", data.access_token);
+          return true;
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      logout: async () => {
+        setStore({ token: null });
+        sessionStorage.removeItem("token");
+      },
+
+      pago: async (data) => {
+
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+
+          },
+          mode: "no-cors",
+          body: data,
+        };
+
+        try {
+          const response = await fetch(
+            // "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us86.gitpod.io/api/pago",
+            `${process.env.BACKEND_URL}/api/pago`,
+
             options
           );
           if (!response.ok) {
             alert("Error en el formulario, por favor verifique los datos");
           }
-          const data = await response.json;
-          console.log(data);
+          // const data = await response.json;
+          // console.log(data);
         } catch (error) {
           console.log(error);
         }
