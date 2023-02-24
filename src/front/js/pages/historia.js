@@ -27,10 +27,10 @@ export const Historia = () => {
 
   return (
     <>
-      <div className="container border border">
+      <div className="container-h border border justify-content-center">
         <h1 className="d-flex justify-content-center mt-5 mb-5">Historia Medica</h1>
         <div className="container d-flex justify-content-center">
-          <form className="row g-3">
+          <form className="row g-3"onSubmit={historia}>
             <div className="col-md-4">
               <label for="validationDefault01" className="form-label">Nombre y Apellido</label>
               <input type="text" className="form-control" id="validationDefault01" required onChange={(event) => setName(event.target.value)} value={name} />
@@ -94,7 +94,7 @@ export const Historia = () => {
               </div>
             </div>
 
-            <div className="col-md-11 row d-flex justify-content-center"value={especif} onChange={(especif) => setEspecif(event.target.value)}>
+            <div className="col-md-11 row d-flex justify-content-center" value={especif} onChange={(especif) => setEspecif(event.target.value)}>
               <label for="exampleFormControlTextarea1" className="form-label">Si su respuesta es "SI" por favor especifique</label>
               <textarea className="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
             </div>
@@ -123,9 +123,16 @@ export const Historia = () => {
               <label for="exampleFormControlTextarea1" className="form-label">Observaciones</label>
               <textarea className="form-control d-flex justify-content-center" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-                        
+
             <div className="col-12 d-flex justify-content-center m-2">
-              <button className="btn btn-primary" type="submit">Enviar</button>
+            <button type="submit" className="btn btn-primary">Enviar formulario</button>
+            </div>
+            <div className="col-12 d-flex justify-content-center m-2">
+              <a href="#!" className="fw-bold text-body">
+                <Link to="/calendar">
+                  <u>Programa tu cita</u>
+                </Link>
+              </a>
             </div>
           </form>
         </div>

@@ -62,6 +62,7 @@ class Pago(db.Model):
 
 
 class Historia(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     body = db.Column(db.String())
     name = db.Column(db.String())
@@ -96,5 +97,4 @@ class Historia(db.Model):
             "cirugiasAnt": self.cirugiasAnt,
             "alergias": self.alergias,
             "obs": self.obs,
-
         }
