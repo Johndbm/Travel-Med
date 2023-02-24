@@ -12,6 +12,7 @@ from api.models import db, User
 from api.models import db, Pago
 from api.models import db, Historia
 from api.utils import generate_sitemap, APIException
+import cloudinary.uploader as uploader
 
 api = Blueprint('api', __name__)
 
@@ -88,25 +89,30 @@ def get_pagos():
 @api.route('/pago', methods=['POST'])
 def post_pagos():
     if request.method == 'POST' :
-        user_id = body.get("user_id", None)
-        body = request.json
-        id_passport = body.get("id_passport", None)
-        payment_method = body.get("payment_method", None)
-        confirmation_number = body.get("confirmation_number", None)
-        transaction_person = body.get("transaction_person", None)
-        image_of_payment = body.get("image_of_payment",None)
-        image_id = body.get("image_id",None)
+        
+        user_id = 2
+        payment_method = request.form.get("payment_method", None)
+        confirmation_number = request.form.get("confirmation_number", None)
+        transaction_person = request.form.get("transaction_person", None)
+        image_of_payment = request.files["image_of_payment"]
+        id_passport = request.form.get("id_passport",None)
+
+       
         try:
-            if id_passport is None or payment_method is None or confirmation_number is None or transaction_person is None or image_of_payment is None or image_id is None:
+            imagen_upload = uploader.upload(image_of_payment)
+            print(imagen_upload)
+            if id_passport is None or payment_method is None or confirmation_number is None or transaction_person is None or image_of_payment is None :
                 raise Exception("Debe ingresar todos los datos", 400)
-            pago= Pago(id_passport=id_passport,payment_method=payment_method,confirmation_number=confirmation_number,transaction_person=transaction_person,image_of_payment=image_of_payment,image_id=image_id, user_id=user_id)
+            pago= Pago(id_passport=id_passport,payment_method=payment_method,confirmation_number=confirmation_number,transaction_person=transaction_person,image_of_payment=imagen_upload["url"],image_id=imagen_upload["public_id"], user_id=user_id)
             db.session.add(pago)
             db.session.commit()
-            return jsonify("message" "El formulario de pago ha sido llenado con exito")
+            return jsonify("message" "El formulario de pago ha sido llenado con exito"), 201
+            # return jsonify([]), 200
         except Exception as error:
             print(error.args)
             # return jsonify(error.args[0]),error.args[1]
             return jsonify([]), 500
+
 
 @api.route('/historia', methods=['GET']) 
 def get_historias():
@@ -148,3 +154,4 @@ def post_historias():
             print(error.args)
             # return jsonify(error.args[0]),error.args[1]
             return jsonify([]), 500
+
