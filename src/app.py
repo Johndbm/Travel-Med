@@ -21,6 +21,7 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 # app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_KEY')
+
 # jwt = JWTManager(app)
 
 # database condiguration
