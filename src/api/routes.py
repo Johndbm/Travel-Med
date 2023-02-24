@@ -112,7 +112,7 @@ def post_pagos():
 def get_historias():
     response={"mensaje":"historia medica"}
     if request.method == 'GET' :
-        historias= Historia.query.all()
+        all_historias= Historia.query.all()
         historia = []
         for historia in all_historias :
             historia.append(historia.serialize())

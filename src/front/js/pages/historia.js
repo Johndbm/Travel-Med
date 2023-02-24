@@ -30,7 +30,7 @@ export const Historia = () => {
       <div className="container-h border border justify-content-center">
         <h1 className="d-flex justify-content-center mt-5 mb-5">Historia Medica</h1>
         <div className="container d-flex justify-content-center">
-          <form className="row g-3"onSubmit={historia}>
+          <form className="row g-3" onSubmit={historia}>
             <div className="col-md-4">
               <label for="validationDefault01" className="form-label">Nombre y Apellido</label>
               <input type="text" className="form-control" id="validationDefault01" required onChange={(event) => setName(event.target.value)} value={name} />
@@ -125,7 +125,7 @@ export const Historia = () => {
             </div>
 
             <div className="col-12 d-flex justify-content-center m-2">
-            <button type="submit" className="btn btn-primary">Enviar formulario</button>
+              <button type="submit" className="btn btn-primary">Enviar formulario</button>
             </div>
             <div className="col-12 d-flex justify-content-center m-2">
               <a href="#!" className="fw-bold text-body">
