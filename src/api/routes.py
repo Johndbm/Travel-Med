@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 
 # from flask_jwt_extended import create_access_token
-# from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import get_jwt_identity, jwt_required, create_access_token
 # from flask_jwt_extended import jwt_required
 
 
@@ -86,9 +86,12 @@ def get_pagos():
 
 
 @api.route('/pago', methods=['POST'])
+@jwt_required()
 def post_pagos():
-    if request.method == 'POST' :
+    if request.method == 'POST':
         
+      
+
         user_id = 2
         payment_method = request.form.get("payment_method", None)
         confirmation_number = request.form.get("confirmation_number", None)
@@ -106,7 +109,7 @@ def post_pagos():
             db.session.add(pago)
             db.session.commit()
             return jsonify("message" "El formulario de pago ha sido llenado con exito"), 201
-            # return jsonify([]), 200
+            return jsonify([]), 200
         except Exception as error:
             print(error.args)
             return jsonify({"message":f"{error.args}"}), 500

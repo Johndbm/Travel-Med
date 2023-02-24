@@ -10,7 +10,7 @@ export const Pago = () => {
   const [confirmation_number, setConfirmation_number] = useState("");
   const [transaction_person, setTransaction_person] = useState("");
   const [image_of_payment, setImage_of_payment] = useState("");
- 
+
 
   const { actions } = useContext(Context);
 
@@ -131,7 +131,7 @@ export const Pago = () => {
                     name="flexRadioDefault"
                     id="flexRadioDefault3"
                     value="Zelle"
-                    // checked
+                  // checked
                   />
                   <label
                     className="form-check-label"
@@ -178,9 +178,11 @@ export const Pago = () => {
                 <input
                   className="form-control"
                   type="file"
-                  id="formFile"
-                  value={image_of_payment}
-                  onChange={(event) => setImage_of_payment(event.target.value)}
+                  id="formFile"deimian
+                  name="image_of_payment"
+                  // value={image_of_payment}
+                  onChange={(event) => setImage_of_payment(event.target.files[0])}
+
                 />
               </div>
               <button type="submit" className="btn btn-primary mb-5 mt-3">

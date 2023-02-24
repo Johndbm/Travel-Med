@@ -127,27 +127,30 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       pago: async (data) => {
+        const store = getStore()
 
-        const options = {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-
-          },
-          mode: "no-cors",
-          body: data,
-        };
-
+        
         try {
           const response = await fetch(
-            // "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us86.gitpod.io/api/pago",
-            `${process.env.BACKEND_URL}/api/pago`,
+            "https://3001-violet-rodent-x867m1vxx6t.ws-us87.gitpod.io/api/pago",
+            {
+              method: "POST",
+              mode: "no-cors",
+              headers: {
+              
+                "Authorization": `Bearer ${store.token}`
+              },
+              body: data
 
-            options
+            }
+
           );
-          if (!response.ok) {
-            alert("Error en el formulario, por favor verifique los datos");
-          }
+          const data = await response.json()
+          console.log(data)
+          console.log(response)
+          // if (!response.ok) {
+          //   alert("Error en el formulario, por favor verifique los datos");
+          // }
           //  const data = await response.json;
           //  console.log(data);
         } catch (error) {
