@@ -127,14 +127,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       pago: async (data) => {
-
         const options = {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-
+            Authorization: `Bearer ${store.token}`,
           },
           mode: "no-cors",
+
           body: data,
         };
 

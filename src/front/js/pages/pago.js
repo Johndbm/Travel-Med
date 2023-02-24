@@ -10,7 +10,6 @@ export const Pago = () => {
   const [confirmation_number, setConfirmation_number] = useState("");
   const [transaction_person, setTransaction_person] = useState("");
   const [image_of_payment, setImage_of_payment] = useState("");
- 
 
   const { actions } = useContext(Context);
 
@@ -26,16 +25,7 @@ export const Pago = () => {
 
     actions.pago(formData);
 
-    // actions.pago(
-    //   user_id,
-    //   id_passport,
-    //   payment_method,
-    //   confirmation_number,
-    //   transaction_person,
-    //   image_of_payment
-    //   // image_id
-    // );
-    // console.log(Text);
+   
   };
 
   return (
@@ -179,8 +169,10 @@ export const Pago = () => {
                   className="form-control"
                   type="file"
                   id="formFile"
-                  value={image_of_payment}
-                  onChange={(event) => setImage_of_payment(event.target.value)}
+                  name="image_of_payment"
+                  onChange={(event) =>
+                    setImage_of_payment(event.target.files[0])
+                  }
                 />
               </div>
               <button type="submit" className="btn btn-primary mb-5 mt-3">
