@@ -76,11 +76,11 @@ export const Login = () => {
                 </Link>
               </a>
             </p>
-            <div className="dropdown">
+            {/* <div className="dropdown">
               <a className="dropdown-item text-muted" href="#">
                 Olvidaste la Contraseña?
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
         <button
