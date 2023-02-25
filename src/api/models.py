@@ -64,7 +64,6 @@ class Pago(db.Model):
 class Historia(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    body = db.Column(db.String())
     name = db.Column(db.String())
     edad = db.Column(db.Integer, nullable=False)
     peso = db.Column(db.Integer, nullable=False)
