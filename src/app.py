@@ -11,7 +11,7 @@ from api.models import db
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
-# from flask_jwt_extended import JWTManager
+from flask_jwt_extended import JWTManager
 
 #from models import Person
 
@@ -21,7 +21,8 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_KEY')
-# jwt = JWTManager(app)
+
+jwt = JWTManager(app)
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
@@ -31,6 +32,9 @@ else:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['CLOUDINARY_URL']= os.environ.get(' CLOUDINARY_URL')
+
+
 MIGRATE = Migrate(app, db, compare_type = True)
 db.init_app(app)
 

@@ -28,17 +28,17 @@ export const Navprofile = () => {
       >
         <li>
           <a className="dropdown-item" href="#">
-            New project...
+            Nueva Consulta...
           </a>
         </li>
         <li>
           <a className="dropdown-item" href="#">
-            Settings
+            Ajustes
           </a>
         </li>
         <li>
           <a className="dropdown-item" href="#">
-            Profile
+            Mi Perfil
           </a>
         </li>
         <li>

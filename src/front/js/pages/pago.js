@@ -10,21 +10,22 @@ export const Pago = () => {
   const [confirmation_number, setConfirmation_number] = useState("");
   const [transaction_person, setTransaction_person] = useState("");
   const [image_of_payment, setImage_of_payment] = useState("");
-  // const [image_id, setImage_id] = useState("");
 
   const { actions } = useContext(Context);
+
   const pago = (event) => {
     event.preventDefault();
-    actions.pago(
-      user_id,
-      id_passport,
-      payment_method,
-      confirmation_number,
-      transaction_person,
-      image_of_payment
-      // image_id
-    );
-    console.log(Text);
+
+    const formData = new FormData();
+    formData.append("id_passport", id_passport);
+    formData.append("payment_method", payment_method);
+    formData.append("confirmation_number", confirmation_number);
+    formData.append("transaction_person", transaction_person);
+    formData.append("image_of_payment", image_of_payment);
+
+    actions.pago(formData);
+
+   
   };
 
   return (
@@ -55,23 +56,11 @@ export const Pago = () => {
           <div className="col">
             <form onSubmit={pago}>
               <div className="row">
-                <div className="col-md-6 mb-3">
-                  <label for="exampleNombre" className="form-label">
-                    Nombres
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="exampleNombre"
-                    required
-                    value={user_id}
-                    onChange={(event) => setUser_id(event.target.value)}
-                  />
-                </div>
+                <div className="col-md-6 mb-3"></div>
               </div>
               <div className="row">
                 <div className="col-md-6 mb-3">
-                  <label for="exampleInputEmail1" className="form-label">
+                  <label htmlFor="exampleInputEmail1" className="form-label">
                     ID o pasaporte
                   </label>
                   <input
@@ -88,7 +77,7 @@ export const Pago = () => {
                   </div>
                 </div>
               </div>
-              <h5>Metodo de pago</h5>{" "}
+              <h5>Metodo de pago</h5>
               <div
                 className=""
                 id="parentMetodoDePago"
@@ -103,7 +92,10 @@ export const Pago = () => {
                     id="flexRadioDefault1"
                     value="PayPal"
                   />
-                  <label className="form-check-label" for="flexRadioDefault1">
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexRadioDefault1"
+                  >
                     PayPal
                   </label>
                 </div>
@@ -115,7 +107,10 @@ export const Pago = () => {
                     id="flexRadioDefault2"
                     value="Transferencia"
                   />
-                  <label className="form-check-label" for="flexRadioDefault2">
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexRadioDefault2"
+                  >
                     Transferencia
                   </label>
                 </div>
@@ -124,17 +119,20 @@ export const Pago = () => {
                     className="form-check-input"
                     type="radio"
                     name="flexRadioDefault"
-                    id="flexRadioDefault2"
+                    id="flexRadioDefault3"
                     value="Zelle"
                     // checked
                   />
-                  <label className="form-check-label" for="flexRadioDefault2">
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexRadioDefault3"
+                  >
                     Zelle
                   </label>
                 </div>
               </div>
               <div className="col-md-3">
-                <label for="validationDefault05" className="form-label">
+                <label htmlFor="validationDefault05" className="form-label">
                   Numero de confirmacion
                 </label>
                 <input
@@ -149,13 +147,13 @@ export const Pago = () => {
                 />
               </div>
               <div className="col-md-3">
-                <label for="validationDefault05" className="form-label">
+                <label htmlFor="validationDefault05" className="form-label">
                   Nombre de quien hizo la transaccion
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="validationDefault05"
+                  id="validationDefault25"
                   required
                   value={transaction_person}
                   onChange={(event) =>
@@ -164,15 +162,17 @@ export const Pago = () => {
                 />
               </div>
               <div className="col-md-6">
-                <label for="formFile" className="form-label">
+                <label htmlFor="formFile" className="form-label">
                   Adjuntar comprobante de pago
                 </label>
                 <input
                   className="form-control"
                   type="file"
                   id="formFile"
-                  value={image_of_payment}
-                  onChange={(event) => setImage_of_payment(event.target.value)}
+                  name="image_of_payment"
+                  onChange={(event) =>
+                    setImage_of_payment(event.target.files[0])
+                  }
                 />
               </div>
               <button type="submit" className="btn btn-primary mb-5 mt-3">
