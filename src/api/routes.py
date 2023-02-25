@@ -3,13 +3,14 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 
-# from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity, jwt_required, create_access_token
-# from flask_jwt_extended import jwt_required
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
 
 
 from api.models import db, User
 from api.models import db, Pago
+from api.models import db, Historia
 from api.utils import generate_sitemap, APIException
 import cloudinary.uploader as uploader
 
@@ -112,9 +113,58 @@ def post_pagos():
             return jsonify([]), 200
         except Exception as error:
             print(error.args)
-            return jsonify({"message":f"{error.args}"}), 500
+            # return jsonify(error.args[0]),error.args[1]
+            return jsonify([]), 500
 
-      
-           
-            
-        return jsonify([]), 405
+
+@api.route('/historia', methods=['GET']) 
+def get_historias():
+    response={"mensaje":"historia medica"}
+    if request.method == 'GET' :
+        all_historias= Historia.query.all()
+        historia = []
+        for historia in all_historias :
+            historia.append(historia.serialize())
+        print(historia)
+    return jsonify(historia,response),200
+
+
+@api.route('/historia', methods=['POST'])
+def post_historias():
+    if request.method == 'POST' :
+        user_id = 1
+        body = request.json
+        name = body.get("name", None)
+        edad = body.get("edad", None)
+        peso = body.get("peso", None)
+        telef = body.get("telef", None)
+        correo = body.get("correo",None)
+        paisRes = body.get("paisRes",None)
+        direccion = body.get("direccion",None)
+        sexo = body.get("sexo",None)
+        alt = body.get("alt",None)
+        cirugiasAnt = body.get("cirugiasAnt",None)
+        alergias = body.get("alergias",None)
+        obs = body.get("obs",None)
+        try:
+            if name is None or edad is None or peso is None or telef is None or correo is None or direccion is None or sexo is None or alt is None or cirugiasAnt is None or alergias is None or obs in None:
+                raise Exception("Debe ingresar todos los datos", 400)
+            historia = Historia(name=name, edad=edad, peso=peso, telef=telef, correo=correo,direccion=direccion,sexo=sexo,alt=alt,cirugiasAnt=cirugiasAnt,alergias=alergias,obs=obs)
+            db.session.add(historia)
+            db.session.commit()
+            return jsonify("message" "La historia medica ha sido llenada con exito")
+        except Exception as error:
+            print(error.args)
+            # return jsonify(error.args[0]),error.args[1]
+            return jsonify([]), 500
+
+
+@api.route('/send mail' , methods=['POST'])
+def send_mail():
+    if request.method == 'POST':
+        data = request.json
+        
+        return jsonify([]), 200
+
+    
+

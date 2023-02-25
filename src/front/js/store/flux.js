@@ -127,9 +127,17 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       pago: async (data) => {
-        const store = getStore()
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${store.token}`,
+          },
+          mode: "no-cors",
 
-        
+          body: data,
+        };
+
         try {
           const response = await fetch(
             "https://3001-violet-rodent-x867m1vxx6t.ws-us87.gitpod.io/api/pago",
@@ -183,7 +191,59 @@ const getState = ({ getStore, getActions, setStore }) => {
         const demo = store.demo.map((elm, i) => {
           if (i === index) elm.background = color;
           return elm;
-        });
+        })},
+
+        historia: async (
+          user_id,
+          name,
+          edad,
+          peso,
+          telef,
+          correo,
+          paisRes,
+          direccion,
+          sexo,
+          alt,
+          cirugiasAnt,
+          alergias,
+          obs
+        ) => {
+          const formulario = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user_id: user_id,
+              name: name,
+              edad: edad,
+              peso: peso,
+              telef: telef,
+              correo: correo,
+              paisRes: paisRes,
+              direccion: direccion,
+              sexo: sexo,
+              alt: alt,
+              cirugiasAnt: cirugiasAnt,
+              alergias: alergias,
+              obs: obs,
+            }),
+          };
+          try {
+            const response = await fetch(
+              "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us86.gitpod.io/api/historia",
+              formulario
+            );
+            if (!response.ok) {
+              alert("Error en el formulario, por favor verifique los datos");
+            }
+            const data = await response.json;
+            console.log(data);
+          } catch (error) {
+            console.log(error);
+          }
+        },
+      
+      exampleFunction: () => {
+        getActions().changeColor(0, "green");
 
         //reset the global store
         setStore({ demo: demo });
