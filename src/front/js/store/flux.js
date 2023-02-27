@@ -212,15 +212,17 @@ const getState = ({ getStore, getActions, setStore }) => {
               sexo: sexo,
               alt: alt,
               cirugiasAnt: cirugiasAnt,
+              Especif : especif,
               alergias: alergias,
+              Especify: especify,
               obs: obs,
             }),
           };
           try {
             const response = await fetch(
-              "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us86.gitpod.io/api/historia",
+              "https://3000-johndbm-proyectofinal-77rp7fplxmx.ws-us88.gitpod.io/historia",
               formulario
-            );
+              );
             if (!response.ok) {
               alert("Error en el formulario, por favor verifique los datos");
             }

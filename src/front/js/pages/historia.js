@@ -15,13 +15,13 @@ export const Historia = () => {
   const [cirugiasAnt, setCirugiasAnt] = useState("");
   const [especif, setEspecif] = useState("");
   const [alergias, setAlergias] = useState("");
-  const [especif1, setEspecif1] = useState("");
+  const [especify, setEspecify] = useState("");
   const [obs, setObs] = useState("");
 
   const { store, actions } = useContext(Context);
   const historia = (event) => {
     event.preventDefault();
-    actions.historia(name, edad, peso, telef, correo, direccion, paisRes, sexo, alt, cirugiasAnt, alergias, obs);
+    actions.historia(name, edad, peso, telef, correo, direccion, paisRes, sexo, alt, cirugiasAnt, especif, alergias, especify, obs);
     console.log(Text);
   };
 
@@ -93,32 +93,33 @@ export const Historia = () => {
                 </label>
               </div>
             </div>
-
-            <div className="col-md-11 row d-flex justify-content-center" value={especif} onChange={(especif) => setEspecif(event.target.value)}>
+          
+            <div className="col-md-11 row d-flex justify-content-center" value={especif} onChange={(event) => setEspecif(event.target.value)}>
               <label for="exampleFormControlTextarea1" className="form-label">Si su respuesta es "SI" por favor especifique</label>
               <textarea className="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
             </div>
-
+            <div className="container">
             <h5 className="d-flex justify-content-center">Sufre de alergia?</h5>
             <div className="form-check" value={alergias} onChange={(event) => setAlergias(event.target.value)}>
+              
               <div className="form-check">
-                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="si" />
-                <label className="form-check-label" for="flexRadioDefault1">
+                <input className="form-check-input" type="radio" name="alergia1" id="flexRadioDefault3" value="si" />
+                <label className="form-check-label" for="flexRadioDefault3">
                   Si
                 </label>
               </div>
               <div className="form-check">
-                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="no" />
-                <label className="form-check-label" for="flexRadioDefault2">
+                <input className="form-check-input" type="radio" name="alergia1" id="flexRadioDefault4" value="no" />
+                <label className="form-check-label" for="flexRadioDefault4">
                   No
                 </label>
               </div>
             </div>
-            <div className="col-md-11 row d-flex justify-content-center" onChange={(event) => setEspecif1(event.target.value)} value={especif1}>
-              <label for="exampleFormControlTextarea1" className="form-label">Especifique</label>
+             <div className="col-md-11 row d-flex justify-content-center" onChange={(event) => setEspecify(event.target.value)} value={especify}>
+              <label for="exampleFormControlTextarea1" className="form-label">Si su repuesta es "SI" por favor especifique</label>
               <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-
+            </div>
             <div className="col-md-11 row d-flex justify-content-center" onChange={(event) => setObs(event.target.value)} value={obs}>
               <label for="exampleFormControlTextarea1" className="form-label">Observaciones</label>
               <textarea className="form-control d-flex justify-content-center" id="exampleFormControlTextarea1" rows="3"></textarea>
