@@ -2,10 +2,11 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
+# from smtplib import SMTP
+import smtplib
+# from flask_jwt_extended import create_access_token
+# from flask_jwt_extended import get_jwt_identity
+# from flask_jwt_extended import jwt_required
 
 
 from api.models import db, User
@@ -28,6 +29,8 @@ def handle_hello():
 
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.
+
+
 @api.route("/token", methods=["POST"])
 def create_token():
     email = request.json.get("email", None)
@@ -37,7 +40,7 @@ def create_token():
         return jsonify({"msg": "Bad username or password"}), 401
     
     user = User.query.filter_by(email=email, password=password).first()
-    if user is None :
+    if user is None:
         return jsonify({"msg": "Bad username or password"}), 401
     
     access_token = create_access_token(identity=user.id)
@@ -50,10 +53,11 @@ def create_token():
     # access_token = create_access_token(identity=email)
     # return jsonify(access_token=access_token)
 
+
 @api.route('/user', methods=['GET'])
 def get_users():
 
-    if request.method == "GET" :
+    if request.method == "GET":
         all_users = User.query.all()
         user_dictionary = []
         for user in all_users:
@@ -62,39 +66,40 @@ def get_users():
 
     return jsonify(user_dictionary), 200
 
+
 @api.route('/user', methods=['POST'])
 def post_users():
-    if request.method == "POST" :
+    if request.method == "POST":
         body = request.json
-        email = body.get("email", None)
-        password = body.get("password", None)
-        name = body.get("name", None)
-        lastname = body.get("lastname", None)
-        country = body.get("country", None)
-        city = body.get("city", None)
-        state = body.get("state", None)
+        email = request.form.get("email", None)
+        password = request.form.get("password", None)
+        name = request.form.get("name", None)
+        lastname = request.form.get("lastname", None)
+        country = request.form.get("country", None)
+        city = request.form.get("city", None)
+        state = request.form.get("state", None)
         try:
             if email is None or password is None or name is None or lastname is None or country is None or city is None or state is None:
-                raise Exception("No ingresaste todos los datos",400)
-            user = User(email=email, password=password, name=name, lastname=lastname, country=country, city=city, state=state)
+                raise Exception("No ingresaste todos los datos", 400)
+            user = User(email=email, password=password, name=name,
+                        lastname=lastname, country=country, city=city, state=state)
             db.session.add(user)
             db.session.commit()
             return jsonify("message" "User Created!")
         except Exception as error:
-            return jsonify(error.args[0]),error.args[1]
+            return jsonify(error.args[0]), error.args[1]
 
 
-
-@api.route('/pago', methods=['GET']) 
+@api.route('/pago', methods=['GET'])
 def get_pagos():
-    response={"mensaje":"Probando pagos"}
-    if request.method == 'GET' :
-        all_payments= Pago.query.all()
+    response = {"mensaje": "Probando pagos"}
+    if request.method == 'GET':
+        all_payments = Pago.query.all()
         payment_dictionary = []
-        for payment in all_payments :
+        for payment in all_payments:
             payment_dictionary.append(payment.serialize())
         print(payment_dictionary)
-    return jsonify(payment_dictionary,response),200
+    return jsonify(payment_dictionary, response), 200
 
 
 
@@ -146,62 +151,79 @@ def post_pagos():
         except Exception as error:
             db.session.rollback()
             return jsonify(error.args)
+
+       
         
-    
-
-
-@api.route('/historia', methods=['GET']) 
+        
+@api.route('/historia', methods=['GET'])
 def get_historias():
-    response={"mensaje":"historia medica"}
-    if request.method == 'GET' :
-        all_historias= Historia.query.all()
-        historia = []
-        for historia in all_historias :
-            historia.append(historia.serialize())
-        print(historia)
-    return jsonify(historia,response),200
+    response = {"mensaje": "historia medica"}
+    if request.method == 'GET':
+        all_historys = Historia.query.all()
+        history = []
+        for historia in all_historys:
+            history.append(historia.serialize())
+        print(history)
+    return jsonify(history, response), 200
 
 
 @api.route('/historia', methods=['POST'])
 def post_historias():
-    if request.method == 'POST' :
-        user_id = 1
+    if request.method == 'POST':
         body = request.json
+        user_id = 1
         name = body.get("name", None)
-        edad = body.get("edad", None)
-        peso = body.get("peso", None)
-        telef = body.get("telef", None)
-        correo = body.get("correo",None)
-        paisRes = body.get("paisRes",None)
-        direccion = body.get("direccion",None)
-        sexo = body.get("sexo",None)
-        alt = body.get("alt",None)
-        cirugiasAnt = body.get("cirugiasAnt",None)
-        alergias = body.get("alergias",None)
-        obs = body.get("obs",None)
+        edad = request.form.get("edad", None)
+        peso = request.form.get("peso", None)
+        telef = request.form.get("telef", None)
+        correo = request.form.get("correo", None)
+        paisRes = request.form.get("paisRes", None)
+        direccion = request.form.get("direccion", None)
+        sexo = request.form.get("sexo", None)
+        alt = request.form.get("alt", None)
+        cirugiasAnt = request.form.get("cirugiasAnt", None)
+        alergias = request.form.get("alergias", None)
+        obs = request.form.get("obs", None)
+
+        if name is None or edad is None or peso is None or telef is None or correo is None or direccion is None or sexo is None or alt is None or cirugiasAnt is None or alergias is None or obs in None:
+            return jsonify("error, faltan datos"), 400
+
         try:
-            if name is None or edad is None or peso is None or telef is None or correo is None or direccion is None or sexo is None or alt is None or cirugiasAnt is None or alergias is None or obs in None:
-                raise Exception("Debe ingresar todos los datos", 400)
-            historia = Historia(name=name, edad=edad, peso=peso, telef=telef, correo=correo,direccion=direccion,sexo=sexo,alt=alt,cirugiasAnt=cirugiasAnt,alergias=alergias,obs=obs)
+            historia = Historia(name=name, edad=edad, peso=peso, telef=telef, correo=correo,
+                                direccion=direccion, sexo=sexo, alt=alt, cirugiasAnt=cirugiasAnt, alergias=alergias, obs=obs)
             db.session.add(historia)
             db.session.commit()
-            return jsonify("message" "La historia medica ha sido llenada con exito")
+            return jsonify("message" "La historia medica ha sido llenada con exito.."), 200
         except Exception as error:
             print(error.args)
-            # return jsonify(error.args[0]),error.args[1]
             return jsonify([]), 500
 
 
-@api.route('/send mail' , methods=['POST'])
+@api.route('/send-mail', methods=['POST'])
 def send_mail():
     if request.method == 'POST':
         data = request.json
-        
-        return jsonify([]), 200
+        message = data.get("message")
+        try:
+            server = smtplib.SMTP("smtp.gmail.com", 587)
+            server.starttls()
+            server.login('travelmed23@gmail.com', 'duspfibotpbahgya')
+            server.sendmail('travelmed23@gmail.com',
+                            'travelmed23@gmail.com', message)
+            server.quit()
+            print("email send")
+            return jsonify("message"), 200
 
+        except Exception as error:
+            print(error)
+            print("Email not sending, error", error.args)
+            return jsonify({"message": "error"}), 500
+    
+    
     
 @api.route('/prueba',  methods=['GET'])
 @jwt_required()
 def prueba():
     user_id = get_jwt_identity()
     return jsonify(user_id), 200
+
