@@ -13,6 +13,8 @@ from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
 from flask_jwt_extended import JWTManager
+from amadeus import Client, ResponseError, Location
+
 
 #from models import Person
 
@@ -22,8 +24,16 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_KEY')
-
 jwt = JWTManager(app)
+
+app.config["CLIENT_ID"] = os.environt.get('API_KEY')
+
+app.config["CLIENT_SECRET"] = os.environt.get('API_SECRET')
+
+
+
+
+
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")

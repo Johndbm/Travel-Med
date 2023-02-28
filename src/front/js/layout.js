@@ -10,6 +10,7 @@ import { Single } from "./pages/single";
 import { Especialistas } from "./pages/especialistas.js";
 import { Pago } from "./pages/pago.js";
 import { Register } from "./pages/register";
+import { Flight_offers } from "./pages/flight_offers";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -41,6 +42,7 @@ const Layout = () => {
             <Route element={<Calendar />} path="/calendar" />
             <Route element={<Historia />} path="/historia" />
             <Route element={<Conocenos />} path="/conocenos" />
+            <Route element={<Flight_offers />} path="/flight_offers" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

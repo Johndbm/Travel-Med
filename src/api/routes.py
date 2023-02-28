@@ -6,6 +6,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
+from amadeus import Client, ResponseError
 
 
 from api.models import db, User
@@ -162,9 +163,23 @@ def post_historias():
 @api.route('/send mail' , methods=['POST'])
 def send_mail():
     if request.method == 'POST':
-        data = request.json
+        data = request.json            
+       
         
         return jsonify([]), 200
 
-    
+
+@api.route('/flight_offers' , methods=['GET'])
+def flight_offers():
+    if request.method == 'GET':
+        try:
+            response = amadeus. shopping.flight_offers_search.get(
+                originLocationCode='MAD',
+                destinationLocationCode='ATH',
+                departureDate='2023-04-01',
+                adults=1)
+                
+            print(response.data)
+        except ResponseError as error:
+            print(error)   
 
