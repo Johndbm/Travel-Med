@@ -27,9 +27,11 @@ export const Navprofile = () => {
         data-popper-placement="bottom-end"
       >
         <li>
-          <a className="dropdown-item" href="#">
+          <Link to="/especialistas" className="dropdown-item" href="#">
+          
             Nueva Consulta...
-          </a>
+          
+          </Link>
         </li>
         <li>
           <a className="dropdown-item" href="#">
