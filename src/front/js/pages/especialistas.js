@@ -21,6 +21,7 @@ export const Especialistas = () => {
               Cirujano Plastico experto en Cirugia Reconstructiva y Estetica
               experto en Cirugia de Mamas .
             </p>
+            <h5>20$</h5>
             <Link to="/pago" className="btn btn-primary">
               Agendar cita
             </Link>
@@ -35,6 +36,7 @@ export const Especialistas = () => {
               Cirujano Plastico Reconstructivo, Presidente de la Sociedad de
               Cirugia Plastica Venezolana 2016-2018
             </p>
+            <h5>20$</h5>
             <Link to="/pago" className="btn btn-primary">
               Agendar cita
             </Link>
@@ -51,6 +53,7 @@ export const Especialistas = () => {
               Otorrinolaringologo Especialista en Rinoplastia Estetica y
               Funcional. Master en Rinoplastia y Cirugia de SPN.
             </p>
+            <h5>20$</h5>
             <Link to="/pago" className="btn btn-primary">
               Agendar cita
             </Link>
@@ -65,6 +68,7 @@ export const Especialistas = () => {
               Cirujano Bariatrico. Cuenta con 15 años de experiencia. Director
               del Hospital J.M de los Rios
             </p>
+            <h5>20$</h5>
             <Link to="/pago" className="btn btn-primary">
               Agendar cita
             </Link>
