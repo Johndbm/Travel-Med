@@ -183,7 +183,7 @@ def post_historias():
         especify = body.get("especify", None)
         obs = body.get("obs", None)
 
-        if name is None or edad is None or peso is None or telef is None or correo is None or direccion is None or sexo is None or alt is None or cirugiasAnt is None or especif is None or alergias is None or especify is None or obs is None:
+        if name is None or edad is None or peso is None or telef is None or correo is None or direccion is None or sexo is None or alt is None or cirugiasAnt is None or alergias is None:
             return jsonify("error, faltan datos"), 400
 
         try:
