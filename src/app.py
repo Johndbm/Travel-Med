@@ -20,7 +20,9 @@ static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
+app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_KEY')
 
+# jwt = JWTManager(app)
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
@@ -30,8 +32,6 @@ else:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_SECRET_KEY']=os.environ.get("FLASK_APP_KEY")
-jwt=JWTManager(app)
 app.config['CLOUDINARY_URL']= os.environ.get(' CLOUDINARY_URL')
 
 

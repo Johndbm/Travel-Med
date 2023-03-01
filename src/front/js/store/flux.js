@@ -60,19 +60,22 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       login: async (email, password) => {
-        const store = getStore();
-
+        // console.log(email, password);
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        };
         try {
-          const response = await fetch(`${process.env.BACKEND_URL}/api/token`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: email,
-              password: password,
-            }),
-          });
+          const response = await fetch(
+            `${process.env.BACKEND_URL}/api/token`,
+            options
+          );
           if (!response.ok) {
             return false;
           }
@@ -123,24 +126,34 @@ const getState = ({ getStore, getActions, setStore }) => {
         sessionStorage.removeItem("token");
       },
 
-      // pago: async (data) => {
-      //   const store = getStore();
-      //   try {
-      //     const response = await fetch(`${process.env.BACKEND_URL}/api/pago`, {
-      //       method: "POST",
-      //       mode: "no-cors",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //         Authorization: `Bearer ${store.token}`,
-      //       },
-      //       body: data,
-      //     });
-      //     const data = await response.json();
-      //     console.log(data);
-      //   } catch (error) {
-      //     console.log(error);
-      //   }
-      // },
+      pago: async (data) => {
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${store.token}`,
+          },
+          mode: "no-cors",
+
+          body: data,
+        };
+
+        try {
+          const response = await fetch(
+            // "https://3001-johndbm-proyectofinal-dfmd0gmnslt.ws-us86.gitpod.io/api/pago",
+            `${process.env.BACKEND_URL}/api/pago`,
+
+            options
+          );
+          if (!response.ok) {
+            alert("Error en el formulario, por favor verifique los datos");
+          }
+          //  const data = await response.json;
+          //  console.log(data);
+        } catch (error) {
+          console.log(error);
+        }
+      },
 
       exampleFunction: () => {
         getActions().changeColor(0, "green");
@@ -169,9 +182,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           return elm;
         })},
 
-
-
-historia: async (
+        historia: async (
           user_id,
           name,
           edad,
@@ -183,9 +194,7 @@ historia: async (
           sexo,
           alt,
           cirugiasAnt,
-          especif,
           alergias,
-          especify,
           obs
         ) => {
           const formulario = {
@@ -203,74 +212,27 @@ historia: async (
               sexo: sexo,
               alt: alt,
               cirugiasAnt: cirugiasAnt,
-              especif : especif,
+              Especif : especif,
               alergias: alergias,
-              especify: especify,
+              Especify: especify,
               obs: obs,
             }),
           };
           try {
             const response = await fetch(
-              `${process.env.BACKEND_URL}/api/historia`,
+              "https://3000-johndbm-proyectofinal-77rp7fplxmx.ws-us88.gitpod.io/historia",
               formulario
               );
             if (!response.ok) {
               alert("Error en el formulario, por favor verifique los datos");
             }
-            const data = await response.json();
+            const data = await response.json;
             console.log(data);
           } catch (error) {
             console.log(error);
           }
         },
       
-      exampleFunction: () => {
-        getActions().changeColor(0, "green");
-
-        //reset the global store
-        setStore({ demo: demo });
-      },
-    },
-  };
-};
-
-
-
-
-      prueba: async () => {
-        const store = getStore();
-
-        try {
-          const response = await fetch(
-            `${process.env.BACKEND_URL}/api/prueba`,
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${store.token}`,
-              },
-       })},
-
-      registerPago: async (data) => {
-        const store = getStore();
-        try {
-          const response = await fetch(`${process.env.BACKEND_URL}/api/pago`, {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${store.token}`,
-            },
-            body: data,
-          });
-
-          const dataTwo = await response.json();
-          if (!response.ok) {
-            alert("Error en el formulario, por favor verifique los datos");
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      },
-
       exampleFunction: () => {
         getActions().changeColor(0, "green");
 

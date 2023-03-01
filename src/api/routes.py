@@ -35,23 +35,12 @@ def handle_hello():
 def create_token():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
-
-    if email is None or password is None:
-        return jsonify({"msg": "Bad username or password"}), 401
-    
     user = User.query.filter_by(email=email, password=password).first()
     if user is None:
         return jsonify({"msg": "Bad username or password"}), 401
-    
-    access_token = create_access_token(identity=user.id)
-    return jsonify(access_token=access_token), 200
 
-    # user = User.query.filter_by(email=email, password=password).first()
-    # if user is None :
-    #     return jsonify({"msg": "Bad username or password"}), 401
-
-    # access_token = create_access_token(identity=email)
-    # return jsonify(access_token=access_token)
+    access_token = create_access_token(identity=email)
+    return jsonify(access_token=access_token)
 
 
 @api.route('/user', methods=['GET'])
@@ -102,59 +91,34 @@ def get_pagos():
     return jsonify(payment_dictionary, response), 200
 
 
-
 @api.route('/pago', methods=['POST'])
-@jwt_required()
 def post_pagos():
-    if request.method == 'POST' :
-        user_id = get_jwt_identity()
-        data_files = request.files
-        data_form = request.form
+    if request.method == 'POST':
 
-        data = {
-            "payment_method": data_form.get("payment_method", None),
-            "confirmation_number": data_form.get("confirmation_number", None),
-            "transaction_person": data_form.get("transaction_person", None),
-            "image_of_payment": data_files.get("image_of_payment", None),
-            "id_passport": data_form.get("id_passport", None)
-        }
+        user_id = 2
+        payment_method = request.form.get("payment_method", None)
+        confirmation_number = request.form.get("confirmation_number", None)
+        transaction_person = request.form.get("transaction_person", None)
+        image_of_payment = request.files["image_of_payment"]
+        id_passport = request.form.get("id_passport", None)
 
-        # print(data)
-
-        if data is None:
-            return jsonify("Debe ingresar todos los datos"), 400
-        if data.get('payment_method') is None:
-            return jsonify("Debe ingresar un metodo de pago"), 400
-        if data.get('confirmation_number') is None:
-            return jsonify("Debe ingresar un numero de confirmacion"), 400
-        if data.get('transaction_person') is None:
-            return jsonify("Debe ingresar una persona de transaccion"), 400
-        if data.get('image_of_payment') is None:
-            return jsonify("Debe ingresar una imagen de pago"), 400
-        if data.get('id_passport') is None:
-            return jsonify("Debe ingresar un id de pasaporte"), 400
-        
         try:
-            imagen_upload = uploader.upload(data.get('image_of_payment'))
-            pago = Pago(
-                user_id=user_id,
-                payment_method=data.get('payment_method'),
-                confirmation_number=data.get('confirmation_number'),
-                transaction_person=data.get('transaction_person'),
-                image_of_payment=imagen_upload.get('url'),
-                id_passport=data.get('id_passport'),
-                image_id=imagen_upload["public_id"]
-            )
+            imagen_upload = uploader.upload(image_of_payment)
+            print(imagen_upload)
+            if id_passport is None or payment_method is None or confirmation_number is None or transaction_person is None or image_of_payment is None:
+                raise Exception("Debe ingresar todos los datos", 400)
+            pago = Pago(id_passport=id_passport, payment_method=payment_method, confirmation_number=confirmation_number,
+                        transaction_person=transaction_person, image_of_payment=imagen_upload["url"], image_id=imagen_upload["public_id"], user_id=user_id)
             db.session.add(pago)
             db.session.commit()
             return jsonify("message" "El formulario de pago ha sido llenado con exito"), 201
+            # return jsonify([]), 200
         except Exception as error:
-            db.session.rollback()
-            return jsonify(error.args)
+            print(error.args)
+            # return jsonify(error.args[0]),error.args[1]
+            return jsonify([]), 500
 
-       
-        
-        
+
 @api.route('/historia', methods=['GET'])
 def get_historias():
     response = {"mensaje": "historia medica"}
@@ -203,6 +167,7 @@ def post_historias():
 def send_mail():
     if request.method == 'POST':
         data = request.json
+
         message = data.get("message")
         try:
             server = smtplib.SMTP("smtp.gmail.com", 587)
@@ -218,12 +183,3 @@ def send_mail():
             print(error)
             print("Email not sending, error", error.args)
             return jsonify({"message": "error"}), 500
-    
-    
-    
-@api.route('/prueba',  methods=['GET'])
-@jwt_required()
-def prueba():
-    user_id = get_jwt_identity()
-    return jsonify(user_id), 200
-

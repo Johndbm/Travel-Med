@@ -14,14 +14,18 @@ export const Pago = () => {
   const { actions } = useContext(Context);
 
   const pago = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
+
     const formData = new FormData();
     formData.append("id_passport", id_passport);
     formData.append("payment_method", payment_method);
     formData.append("confirmation_number", confirmation_number);
     formData.append("transaction_person", transaction_person);
     formData.append("image_of_payment", image_of_payment);
-    actions.registerPago(formData);
+
+    actions.pago(formData);
+
+   
   };
 
   return (
@@ -171,11 +175,7 @@ export const Pago = () => {
                   }
                 />
               </div>
-              <button
-                type="button"
-                onClick={pago}
-                className="btn btn-primary mb-5 mt-3"
-              >
+              <button type="submit" className="btn btn-primary mb-5 mt-3">
                 Enviar
               </button>
             </form>
