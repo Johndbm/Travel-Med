@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Calendar } from "./calendar";
+import Swal from 'sweetalert2'
 
 export const Pago = () => {
   const [user_id, setUser_id] = useState("");
@@ -12,8 +13,9 @@ export const Pago = () => {
   const [image_of_payment, setImage_of_payment] = useState("");
 
   const { actions } = useContext(Context);
+  const navigate = useNavigate()
 
-  const pago = (event) => {
+  const pago = async (event) => {
     // event.preventDefault();
     const formData = new FormData();
     formData.append("id_passport", id_passport);
@@ -21,7 +23,22 @@ export const Pago = () => {
     formData.append("confirmation_number", confirmation_number);
     formData.append("transaction_person", transaction_person);
     formData.append("image_of_payment", image_of_payment);
-    actions.registerPago(formData);
+
+
+    const respo = await actions.registerPago(formData);
+    if (respo) {
+      Swal.fire(
+        'Good job!',
+        'You clicked the button!',
+        'success'
+      ).then(() => navigate("/"))
+    } else {
+      Swal.fire(
+        'Good job!',
+        'error verifique la referencia',
+        'error'
+      )
+    }
   };
 
   return (

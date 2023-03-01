@@ -123,25 +123,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         sessionStorage.removeItem("token");
       },
 
-      // pago: async (data) => {
-      //   const store = getStore();
-      //   try {
-      //     const response = await fetch(`${process.env.BACKEND_URL}/api/pago`, {
-      //       method: "POST",
-      //       mode: "no-cors",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //         Authorization: `Bearer ${store.token}`,
-      //       },
-      //       body: data,
-      //     });
-      //     const data = await response.json();
-      //     console.log(data);
-      //   } catch (error) {
-      //     console.log(error);
-      //   }
-      // },
-
+    
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },
@@ -218,26 +200,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log(error);
         }
       },
-      prueba: async () => {
-        const store = getStore();
-
-        try {
-          const response = await fetch(
-            `${process.env.BACKEND_URL}/api/prueba`,
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${store.token}`,
-              },
-            }
-          );
-          const data = await response.json();
-          console.log(data);
-        } catch (error) {
-          console.log(error);
-        }
-      },
+     
       registerPago: async (data) => {
         const store = getStore();
         try {
@@ -248,11 +211,15 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             body: data,
           });
-
-          const dataTwo = await response.json();
-          if (!response.ok) {
-            alert("Error en el formulario, por favor verifique los datos");
-          }
+            if(response.ok){
+              return true
+            }else{
+              return false
+            }
+          // const dataTwo = await response.json();
+          // if (!response.ok) {
+          //   alert("Error en el formulario, por favor verifique los datos");
+          // }
         } catch (error) {
           console.log(error);
         }
