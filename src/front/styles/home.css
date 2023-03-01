@@ -93,3 +93,14 @@ section img:hover {
   margin: 55px;
   
 }
+
+.card-vuelos{
+  margin-left: 320px;
+
+}
+
+.boton-vuelos{
+  margin-left: 350px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
