@@ -2,7 +2,8 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-
+# from smtplib import SMTP
+import smtplib
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
@@ -171,18 +172,23 @@ def post_historias():
         edad = body.get("edad", None)
         peso = body.get("peso", None)
         telef = body.get("telef", None)
-        correo = body.get("correo",None)
-        paisRes = body.get("paisRes",None)
-        direccion = body.get("direccion",None)
-        sexo = body.get("sexo",None)
-        alt = body.get("alt",None)
-        cirugiasAnt = body.get("cirugiasAnt",None)
-        alergias = body.get("alergias",None)
-        obs = body.get("obs",None)
+        correo = body.get("correo", None)
+        paisRes = body.get("paisRes", None)
+        direccion = body.get("direccion", None)
+        sexo = body.get("sexo", None)
+        alt = body.get("alt", None)
+        cirugiasAnt = body.get("cirugiasAnt", None)
+        especif = body.get("especif" , None)
+        alergias = body.get("alergias", None)
+        especify = body.get("especify", None)
+        obs = body.get("obs", None)
+
+        if name is None or edad is None or peso is None or telef is None or correo is None or direccion is None or sexo is None or alt is None or cirugiasAnt is None or especif is None or alergias is None or especify is None or obs is None:
+            return jsonify("error, faltan datos"), 400
+
         try:
-            if name is None or edad is None or peso is None or telef is None or correo is None or direccion is None or sexo is None or alt is None or cirugiasAnt is None or alergias is None or obs in None:
-                raise Exception("Debe ingresar todos los datos", 400)
-            historia = Historia(name=name, edad=edad, peso=peso, telef=telef, correo=correo,direccion=direccion,sexo=sexo,alt=alt,cirugiasAnt=cirugiasAnt,alergias=alergias,obs=obs)
+            historia = Historia(user_id=user_id,name=name, edad=edad, peso=peso, telef=telef, correo=correo,
+                                direccion=direccion, sexo=sexo, alt=alt, cirugiasAnt=cirugiasAnt, especif=especif, alergias=alergias, especify=especify, obs=obs)
             db.session.add(historia)
             db.session.commit()
             return jsonify("message" "La historia medica ha sido llenada con exito")

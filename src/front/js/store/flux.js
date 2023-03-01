@@ -123,10 +123,28 @@ const getState = ({ getStore, getActions, setStore }) => {
         sessionStorage.removeItem("token");
       },
 
-    
-      exampleFunction: () => {
-        getActions().changeColor(0, "green");
-      },
+      // pago: async (data) => {
+      //   const store = getStore();
+      //   try {
+      //     const response = await fetch(`${process.env.BACKEND_URL}/api/pago`, {
+      //       method: "POST",
+      //       mode: "no-cors",
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //         Authorization: `Bearer ${store.token}`,
+      //       },
+      //       body: data,
+      //     });
+      //     const data = await response.json();
+      //     console.log(data);
+      //   } catch (error) {
+      //     console.log(error);
+      //   }
+      // },
+
+      // exampleFunction: () => {
+      //   getActions().changeColor(0, "green");
+      // },
 
       getMessage: async () => {
         try {
@@ -149,11 +167,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         const demo = store.demo.map((elm, i) => {
           if (i === index) elm.background = color;
           return elm;
-        });
+        })
       },
 
+
+
       historia: async (
-        user_id,
+        
         name,
         edad,
         peso,
@@ -164,14 +184,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         sexo,
         alt,
         cirugiasAnt,
+        especif,
         alergias,
+        especify,
         obs
       ) => {
         const formulario = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            user_id: user_id,
+            
             name: name,
             edad: edad,
             peso: peso,
@@ -182,7 +204,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             sexo: sexo,
             alt: alt,
             cirugiasAnt: cirugiasAnt,
+            especif: especif,
             alergias: alergias,
+            especify: especify,
             obs: obs,
           }),
         };
@@ -194,32 +218,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           if (!response.ok) {
             alert("Error en el formulario, por favor verifique los datos");
           }
-          const data = await response.json;
+          const data = await response.json();
           console.log(data);
-        } catch (error) {
-          console.log(error);
-        }
-      },
-     
-      registerPago: async (data) => {
-        const store = getStore();
-        try {
-          const response = await fetch(`${process.env.BACKEND_URL}/api/pago`, {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${store.token}`,
-            },
-            body: data,
-          });
-            if(response.ok){
-              return true
-            }else{
-              return false
-            }
-          // const dataTwo = await response.json();
-          // if (!response.ok) {
-          //   alert("Error en el formulario, por favor verifique los datos");
-          // }
         } catch (error) {
           console.log(error);
         }
@@ -234,5 +234,43 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
   };
 };
+
+
+
+
+// prueba: async () => {
+//   const store = getStore();
+
+//   try {
+//     const response = await fetch(
+//       `${process.env.BACKEND_URL}/api/prueba`,
+//       {
+//         method: "GET",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: `Bearer ${store.token}`,
+//         },
+//  })},
+
+registerPago: async (data) => {
+  const store = getStore();
+  try {
+    const response = await fetch(`${process.env.BACKEND_URL}/api/pago`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${store.token}`,
+      },
+      body: data,
+    });
+
+    const dataTwo = await response.json();
+    if (!response.ok) {
+      alert("Error en el formulario, por favor verifique los datos");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 export default getState;

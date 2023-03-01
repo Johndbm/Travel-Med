@@ -22,7 +22,7 @@ export const Historia = () => {
   const historia = (event) => {
     event.preventDefault();
     actions.historia(name, edad, peso, telef, correo, direccion, paisRes, sexo, alt, cirugiasAnt, especif, alergias, especify, obs);
-    console.log(Text);
+    
   };
 
   return (
@@ -52,13 +52,13 @@ export const Historia = () => {
             <div className="col-md-2">
               <label for="validationDefaultUsername" className="form-label">Num Telef</label>
               <div className="input-group">
-                <input type="text" className="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required onChange={(event) => setTelef(event.target.value)} value={telef} />
+                <input type="text" className="form-control" id="validationDefaul6" aria-describedby="inputGroupPrepend2" required onChange={(event) => setTelef(event.target.value)} value={telef} />
               </div>
             </div>
             <div className="col-md-3">
               <label for="validationDefaultUsername" className="form-label">Correo Electronico</label>
               <div className="input-group">
-                <input type="text" className="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required onChange={(event) => setCorreo(event.target.value)} value={correo} />
+                <input type="text" className="form-control" id="validationDefaul7" aria-describedby="inputGroupPrepend2" required onChange={(event) => setCorreo(event.target.value)} value={correo} />
               </div>
             </div>
             <div className="col-md-5">
@@ -74,8 +74,8 @@ export const Historia = () => {
               </select>
             </div>
             <div className="col-md-1">
-              <label for="validationDefault05" className="form-label">Altura</label>
-              <input type="text" className="form-control" id="validationDefault05" required onChange={(event) => setAlt(event.target.value)} value={alt} />
+              <label for="validationDefault09" className="form-label">Altura</label>
+              <input type="text" className="form-control" id="validationDefault09" required onChange={(event) => setAlt(event.target.value)} value={alt} />
             </div>
 
             <h5 className="d-flex justify-content-center">Se ha realizado cirugias anteriormente?</h5>
@@ -115,14 +115,14 @@ export const Historia = () => {
                 </label>
               </div>
             </div>
-             <div className="col-md-11 row d-flex justify-content-center" onChange={(event) => setEspecify(event.target.value)} value={especify}>
-              <label for="exampleFormControlTextarea1" className="form-label">Si su repuesta es "SI" por favor especifique</label>
-              <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <div className="col-md-11 row d-flex justify-content-center" onChange={(event) => setEspecify(event.target.value)} value={especify}>
+              <label for="exampleFormControlTextarea2" className="form-label">Si su repuesta es "SI" por favor especifique</label>
+              <textarea className="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
             </div>
             </div>
             <div className="col-md-11 row d-flex justify-content-center" onChange={(event) => setObs(event.target.value)} value={obs}>
-              <label for="exampleFormControlTextarea1" className="form-label">Observaciones</label>
-              <textarea className="form-control d-flex justify-content-center" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <label for="exampleFormControlTextarea3" className="form-label">Observaciones</label>
+              <textarea className="form-control d-flex justify-content-center" id="exampleFormControlTextarea3" rows="3"></textarea>
             </div>
 
             <div className="col-12 d-flex justify-content-center m-2">

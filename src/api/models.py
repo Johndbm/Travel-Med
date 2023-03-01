@@ -74,7 +74,9 @@ class Historia(db.Model):
     sexo = db.Column(db.String())
     alt = db.Column(db.String(4))
     cirugiasAnt = db.Column(db.String(200))
+    especif = db.Column(db.String(200))
     alergias = db.Column(db.String(200))
+    especify = db.Column(db.String(200))
     obs = db.Column(db.String(200))
 
     def __repr__(self):
@@ -93,6 +95,8 @@ class Historia(db.Model):
             "sexo": self.sexo,
             "alt": self.alt,
             "cirugiasAnt": self.cirugiasAnt,
+            "especif": self.especif,
             "alergias": self.alergias,
-            "obs": self.obs,
+            "especify": self.especify,
+            "obs": self.obs
         }
