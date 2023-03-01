@@ -31,7 +31,7 @@ export const Pago = () => {
         'Good job!',
         'You clicked the button!',
         'success'
-      ).then(() => navigate("/"))
+      ).then(() => navigate("/historia"))
     } else {
       Swal.fire(
         'Good job!',
