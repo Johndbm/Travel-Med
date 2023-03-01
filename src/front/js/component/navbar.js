@@ -29,29 +29,32 @@ export const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
+            <ul className="navbar-nav px-5">
+              <li className="nav-item px-5">
                 <a className="nav-link active" aria-current="page" href="#"></a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item px-5">
                 <a className="nav-link" href="#nosotros">
                   Sobre Nosotros
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item px-5">
                 <a className="nav-link" href="#ofrecemos">
                   Servicios
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item px-5">
                 <a className="nav-link" href="#contactanos">
                   Contáctanos
                 </a>
               </li>
+              <li className="nav-item px-5">
+                {store.token == null && <Navbuttons />}
+                {store.token !== null && <Navprofile />}
+              </li>
             </ul>
           </div>
-          {store.token == null && <Navbuttons />}
-          {store.token !== null && <Navprofile />}
+          
         </div>
       </div>
     </nav>

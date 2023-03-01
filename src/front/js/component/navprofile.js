@@ -23,7 +23,7 @@ export const Navprofile = () => {
         />
       </a>
       <ul
-        className="dropdown-menu text-small show"
+        className="dropdown-menu text-small"
         data-popper-placement="bottom-end"
       >
         <li>
