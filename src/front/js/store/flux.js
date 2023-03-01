@@ -173,7 +173,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
       historia: async (
-        
+
         name,
         edad,
         peso,
@@ -193,7 +193,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            
+
             name: name,
             edad: edad,
             peso: peso,
@@ -231,46 +231,51 @@ const getState = ({ getStore, getActions, setStore }) => {
         //reset the global store
         setStore({ demo: demo });
       },
-    },
-  };
-};
+      //     },
+      //   };
+      // };
 
 
 
 
-// prueba: async () => {
-//   const store = getStore();
+      // prueba: async () => {
+      //   const store = getStore();
 
-//   try {
-//     const response = await fetch(
-//       `${process.env.BACKEND_URL}/api/prueba`,
-//       {
-//         method: "GET",
-//         headers: {
-//           "Content-Type": "application/json",
-//           Authorization: `Bearer ${store.token}`,
-//         },
-//  })},
+      //   try {
+      //     const response = await fetch(
+      //       `${process.env.BACKEND_URL}/api/prueba`,
+      //       {
+      //         method: "GET",
+      //         headers: {
+      //           "Content-Type": "application/json",
+      //           Authorization: `Bearer ${store.token}`,
+      //         },
+      //  })},
 
-registerPago: async (data) => {
-  const store = getStore();
-  try {
-    const response = await fetch(`${process.env.BACKEND_URL}/api/pago`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${store.token}`,
+      registerPago: async (data) => {
+        const store = getStore();
+        try {
+          const response = await fetch(`${process.env.BACKEND_URL}/api/pago`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${store.token}`,
+            },
+            body: data,
+          });
+
+         
+          if (response.ok) {
+            return true
+            
+          }else{
+          return false}
+        } catch (error) {
+          console.log(error);
+        }
       },
-      body: data,
-    });
-
-    const dataTwo = await response.json();
-    if (!response.ok) {
-      alert("Error en el formulario, por favor verifique los datos");
     }
-  } catch (error) {
-    console.log(error);
   }
-};
+  };
 
 
-export default getState;
+  export default getState;

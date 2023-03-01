@@ -156,12 +156,16 @@ def get_historias():
     response={"mensaje":"historia medica"}
     if request.method == 'GET' :
         all_historias= Historia.query.all()
-        historia = []
-        for historia in all_historias :
-            historia.append(historia.serialize())
-        print(historia)
-    return jsonify(historia,response),200
-
+        print(all_historias)
+        return jsonify(list(map(lambda item:item.serialize(),all_historias)))
+            #     hist = []
+            #     for historia in all_historias :
+                    
+            #         hist.append(historia.serialize())
+            #     print(historia)
+                
+            # return jsonify(historia),200
+    return jsonify([]),200
 
 @api.route('/historia', methods=['POST'])
 def post_historias():
