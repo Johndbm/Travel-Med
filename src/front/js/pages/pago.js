@@ -48,15 +48,15 @@ export const Pago = () => {
         <div className="row align-items-start ms-3">
           <div className="col-4">
             <h4 className="d-flex justify-content-between align-items-center mb-3">
-              <span className="text-primary">Consulta con tu especialista</span>
+              <span className="text-primary"></span>
             </h4>
             <ul className="list-group mb-3">
               <li className="list-group-item d-flex justify-content-between lh-sm">
                 <div>
-                  <h6 className="my-0">Ud a agendado una cita con:</h6>
-                  <small className="text-muted">Breve descripción</small>
+                  <h6 className="my-0">Ud a agendado una cita:</h6>
+                  <small className="text-muted">Consulta Medica</small>
                 </div>
-                <span className="text-muted">$12</span>
+                <span className="text-muted">$20</span>
               </li>
               <li className="list-group-item d-flex justify-content-between">
                 <span>Total (USD)</span>
