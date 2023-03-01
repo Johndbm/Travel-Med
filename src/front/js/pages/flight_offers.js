@@ -3,54 +3,71 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 export const Flight_offers = () => {
+  const [origen, setOrigen] = useState("");
+  const [destino, setDestino] = useState("");
+  const [salida, setSalida] = useState("");
+  const [retorno, setRetorno] = useState("");
+  const [adultos, setAdultos] = useState("");
+  const [niños, setNiños] = useState("");
+  
+
+  
   return (
     <>
       <h1>Elige tu vuelo</h1>
-      <div class="continer-sm">
-        <div class="container-sm border border-dark border border-2">
+      <div className="continer-sm">
+        <div className="container-sm border border-dark border border-2">
           <h3>Locacion</h3>
-          <div class="row">
-            <div class="col-sm">
-              <div class="mb-2">
-                <label id="origin-label" for="origin-input" class="form-label">
+          <div className="row">
+            <div className="col-sm">
+              <div className="mb-2">
+                <label
+                  id="origin-label"
+                  for="origin-input"
+                  className="form-label"
+                >
                   Origen
                 </label>
-                <div class="input-group">
-                  <span class="input-group-text">
-                    <i class="bi-pin-map"></i>{" "}
+                <div className="input-group">
+                  <span className="input-group-text">
+                    <i className="bi-pin-map"></i>{" "}
                   </span>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     list="origin-options"
                     id="origin-input"
                     placeholder="Location"
                     aria-describedby="origin-label"
+                    onChange={(event) => setOrigen(event.target.value)}
+                    value={origen}
                   />
                   <datalist id="origin-options"></datalist>
                 </div>
               </div>
             </div>
-            <div class="col-sm">
-              <div class="mb-2">
+            <div className="col-sm">
+              <div className="mb-2">
                 <label
                   id="destination-label"
                   for="destination-input"
-                  class="form-label"
+                  className="form-label"
                 >
                   Destino
                 </label>
-                <div class="input-group">
-                  <span class="input-group-text">
-                    <i class="bi-pin-map-fill"></i>{" "}
+                <div className="input-group">
+                  <span className="input-group-text">
+                    <i className="bi-pin-map-fill"></i>{" "}
                   </span>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     list="destination-options"
                     id="destination-input"
                     placeholder="Location"
                     aria-describedby="destination-label"
+                    onChange={(event) => setDestino(event.target.value)}
+                    value={destino}
                   />
                   <datalist id="destination-options"></datalist>
                 </div>
@@ -60,69 +77,73 @@ export const Flight_offers = () => {
         </div>
 
         {/* <!--  --> */}
-        <div class="container-sm d-flex align-content-start">
-          <div class="row">
-            <div class="mb-2 col">
-              <div class="h-100 card">
-                <div class="card-body">
-                  <h5 class="card-title">Dates</h5>
-                  <div class="mb-2">
+        <div className="container-sm d-flex align-content-start">
+          <div className="row">
+            <div className="mb-2 col">
+              <div className="h-100 card">
+                <div className="card-body">
+                  <h5 className="card-title">Dates</h5>
+                  <div className="mb-2">
                     <label
                       id="flight-type-label"
                       for="flight-type-select"
-                      class="form-label"
+                      className="form-label"
                     >
                       Flight
                     </label>
                     <select
                       id="flight-type-select"
-                      class="form-select"
+                      className="form-select"
                       aria-describedby="flight-type-label"
                     >
-                      <option value="one-way">One-way</option>
-                      <option value="round-trip">Round-trip</option>
+                      <option value="one-way">Solo Ida</option>
+                      <option value="round-trip">Ida y Vuelta</option>
                     </select>
                   </div>
-                  <div id="departure-date" class="mb-2">
-                    <div id="departure-date" class="mb-2">
+                  <div id="departure-date" className="mb-2">
+                    <div id="departure-date" className="mb-2">
                       <label
                         id="departure-date-label"
                         for="departure-date-input"
-                        class="form-label"
+                        className="form-label"
                       >
-                        Departure date
+                        Salida
                       </label>
-                      <div class="input-group">
-                        <span class="input-group-text">
-                          <i class="bi-calendar"></i>
+                      <div className="input-group">
+                        <span className="input-group-text">
+                          <i className="bi-calendar"></i>
                         </span>
                         <input
                           type="date"
-                          class="form-control"
+                          className="form-control"
                           id="departure-date-input"
                           aria-describedby="departure-date-label"
+                          onChange={(event) => setSalida(event.target.value)}
+                          value={salida}
                         />
                       </div>
                     </div>
                   </div>
-                  <div id="return-date" class="mb-2">
-                    <div id="return-date" class="mb-2">
+                  <div id="return-date" className="mb-2">
+                    <div id="return-date" className="mb-2">
                       <label
                         id="return-date-label"
                         for="return-date-input"
-                        class="form-label"
+                        className="form-label"
                       >
-                        Return date
+                        Retorno
                       </label>
-                      <div class="input-group">
-                        <span class="input-group-text">
-                          <i class="bi-calendar-fill"></i>{" "}
+                      <div className="input-group">
+                        <span className="input-group-text">
+                          <i className="bi-calendar-fill"></i>{" "}
                         </span>
                         <input
                           type="date"
-                          class="form-control"
+                          className="form-control"
                           id="return-date-input"
                           aria-describedby="return-date-label"
+                          onChange={(event) => setRetorno(event.target.value)}
+                          value={retorno}
                         />
                       </div>
                     </div>
@@ -132,47 +153,51 @@ export const Flight_offers = () => {
               </div>
             </div>
           </div>
-          <div class="mb-2 col">
-            <div class="h-100 card">
-              <div class="card-body">
-                <h5 class="card-title">Details</h5>
-                <div class="input-group">
-                  <label for="adults-input" class="input-group-text">
-                    Adults
+          <div className="mb-2 col">
+            <div className="h-100 card">
+              <div className="card-body">
+                <h5 className="card-title">Detalles</h5>
+                <div className="input-group">
+                  <label for="adults-input" className="input-group-text">
+                    Adultos
                   </label>
                   <input
                     type="number"
                     min="0"
-                    class="form-control"
+                    className="form-control"
                     id="adults-input"
                     aria-describedby="adults-label"
+                    onChange={(event) => setAdultos(event.target.value)}
+                    value={adultos}
                   />
                 </div>
-                <span id="adults-label" class="form-text">
+                <span id="adults-label" className="form-text">
                   12 years old and older
                 </span>
               </div>
 
-              <div class="input-group">
-                <label for="children-input" class="input-group-text">
-                  Children
+              <div className="input-group">
+                <label for="children-input" className="input-group-text">
+                  Niños
                 </label>
                 <input
                   type="number"
                   min="0"
-                  class="form-control"
+                  className="form-control"
                   id="children-input"
                   aria-describedby="children-label"
+                  onChange={(event) => setNiños(event.target.value)}
+                  value={niños}
                 />
               </div>
-              <span id="children-label" class="form-text">
+              <span id="children-label" className="form-text">
                 2 to 12 years old
               </span>
             </div>
           </div>
         </div>
       </div>
-      <button id="search-button" class="w-50 btn btn-primary">
+      <button id="search-button" className="w-50 btn btn-primary">
         Search
       </button>
 
