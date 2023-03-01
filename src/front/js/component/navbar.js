@@ -12,10 +12,10 @@ export const Navbar = () => {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <Link to="/">
-            <a className="navbar-brand" href="#">
-              <img src="logo5.png" alt="Bootstrap" width={125} height={70} />
-            </a>
+          <Link to="/" className="navbar-brand">
+
+            <img src="logo5.png" alt="Bootstrap" width={125} height={70} />
+
           </Link>
           <button
             className="navbar-toggler"

@@ -117,7 +117,7 @@ export const Pago = () => {
                     name="flexRadioDefault"
                     id="flexRadioDefault3"
                     value="Zelle"
-                    // checked
+                  // checked
                   />
                   <label
                     className="form-check-label"
