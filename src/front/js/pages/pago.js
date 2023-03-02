@@ -28,14 +28,14 @@ export const Pago = () => {
     const respo = await actions.registerPago(formData);
     if (respo) {
       Swal.fire(
-        'Good job!',
-        'You clicked the button!',
+        'Gracias!',
+        'Transaccion Exitosa!',
         'success'
       ).then(() => navigate("/historia"))
     } else {
       Swal.fire(
-        'Good job!',
-        'error verifique la referencia',
+        'Oops!',
+        'Rechazado🤨, Intente Nuevamente',
         'error'
       )
     }

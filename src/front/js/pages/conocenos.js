@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link} from "react-router-dom";
+import { Link} from "react-router-dom";
 import fotolore from "../../img/fotolore.jpg";
 import fotojohn from "../../img/fotojohn.jpg";
 import fotodali from "../../img/fotodali.jpg";
