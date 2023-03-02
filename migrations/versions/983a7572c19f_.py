@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: f67da1846af5
+Revision ID: 983a7572c19f
 Revises: 
-Create Date: 2023-02-28 14:52:58.952825
+Create Date: 2023-03-01 04:27:03.281454
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f67da1846af5'
+revision = '983a7572c19f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -33,18 +33,20 @@ def upgrade():
     op.create_table('historia',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(), nullable=True),
+    sa.Column('name', sa.String(length=30), nullable=True),
     sa.Column('edad', sa.Integer(), nullable=False),
     sa.Column('peso', sa.Integer(), nullable=False),
     sa.Column('telef', sa.Integer(), nullable=False),
-    sa.Column('correo', sa.String(), nullable=True),
-    sa.Column('direccion', sa.String(), nullable=True),
-    sa.Column('paisRes', sa.String(), nullable=True),
+    sa.Column('correo', sa.String(length=20), nullable=True),
+    sa.Column('direccion', sa.String(length=100), nullable=True),
+    sa.Column('paisRes', sa.String(length=15), nullable=True),
     sa.Column('sexo', sa.String(), nullable=True),
-    sa.Column('alt', sa.String(), nullable=True),
-    sa.Column('cirugiasAnt', sa.String(), nullable=True),
-    sa.Column('alergias', sa.String(), nullable=True),
-    sa.Column('obs', sa.String(), nullable=True),
+    sa.Column('alt', sa.String(length=4), nullable=True),
+    sa.Column('cirugiasAnt', sa.String(length=200), nullable=True),
+    sa.Column('especif', sa.String(length=200), nullable=True),
+    sa.Column('alergias', sa.String(length=200), nullable=True),
+    sa.Column('especify', sa.String(length=200), nullable=True),
+    sa.Column('obs', sa.String(length=200), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

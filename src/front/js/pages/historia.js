@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
+
 
 export const Historia = () => {
   const [name, setName] = useState("");
@@ -19,9 +21,26 @@ export const Historia = () => {
   const [obs, setObs] = useState("");
 
   const { store, actions } = useContext(Context);
-  const historia = (event) => {
-    event.preventDefault();
-    actions.historia(name, edad, peso, telef, correo, direccion, paisRes, sexo, alt, cirugiasAnt, especif, alergias, especify, obs);
+  const navigate = useNavigate()
+
+  const historia = async (event) => {
+
+    const data = {name, edad, peso, telef, correo, direccion, paisRes, sexo, alt, cirugiasAnt, especif, alergias, especify, obs}
+
+    const response = await actions.registerHistoria(data);
+    if (response) {
+      Swal.fire(
+        'Buen trabajo!',
+        'Historia exitosamente registrada en sistema!',
+        'success'
+      ).then(() => navigate("/calendar"))
+    } else {
+      Swal.fire(
+        'Oops!',
+        'Error, por favor verifique los valores introducidos',
+        'error'
+      )
+    }
     
   };
 
@@ -126,7 +145,13 @@ export const Historia = () => {
             </div>
 
             <div className="col-12 d-flex justify-content-center m-2">
-              <button type="submit" className="btn btn-primary">Enviar formulario</button>
+              <button 
+              type="button" 
+              onClick={historia} 
+              className="btn btn-primary"
+              >
+                Enviar formulario
+              </button>
             </div>
             <div className="col-12 d-flex justify-content-center m-2">
               <a href="#!" className="fw-bold text-body">

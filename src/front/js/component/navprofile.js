@@ -23,13 +23,15 @@ export const Navprofile = () => {
         />
       </a>
       <ul
-        className="dropdown-menu text-small show"
+        className="dropdown-menu text-small"
         data-popper-placement="bottom-end"
       >
         <li>
-          <a className="dropdown-item" href="#">
+          <Link to="/especialistas" className="dropdown-item">
+          
             Nueva Consulta...
-          </a>
+          
+          </Link>
         </li>
         <li>
           <a className="dropdown-item" href="#">

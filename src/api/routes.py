@@ -172,6 +172,7 @@ def post_historias():
     if request.method == 'POST' :
         user_id = 1
         body = request.json
+        print(body)
         name = body.get("name", None)
         edad = body.get("edad", None)
         peso = body.get("peso", None)

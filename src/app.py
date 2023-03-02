@@ -12,6 +12,8 @@ from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
 from flask_jwt_extended import JWTManager
+from datetime import timedelta
+
 
 #from models import Person
 
@@ -31,6 +33,7 @@ else:
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY']=os.environ.get("FLASK_APP_KEY")
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=360)
 jwt=JWTManager(app)
 app.config['CLOUDINARY_URL']= os.environ.get(' CLOUDINARY_URL')
 

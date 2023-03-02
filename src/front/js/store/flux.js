@@ -273,6 +273,30 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log(error);
         }
       },
+
+      registerHistoria: async (data) => {
+        console.log(data);
+        const store = getStore();
+        try {
+          const response = await fetch(`${process.env.BACKEND_URL}/api/historia`, {
+            method: "POST",
+            headers: {
+              "Content-Type":"application/json",
+              Authorization: `Bearer ${store.token}`,
+            },
+            body: JSON.stringify(data),
+          });
+
+         
+          if (response.ok) {
+            return true
+            
+          }else{
+          return false}
+        } catch (error) {
+          console.log(error);
+        }
+      },
     }
   }
   };
