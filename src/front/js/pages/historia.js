@@ -153,13 +153,6 @@ export const Historia = () => {
                 Enviar formulario
               </button>
             </div>
-            <div className="col-12 d-flex justify-content-center m-2">
-              <a href="#!" className="fw-bold text-body">
-                <Link to="/calendar">
-                  <u>Programa tu cita</u>
-                </Link>
-              </a>
-            </div>
           </form>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import fotolore from "../../img/fotolore.jpg";
 import fotojohn from "../../img/fotojohn.jpg";
 import fotodali from "../../img/fotodali.jpg";
@@ -47,6 +47,7 @@ export const Conocenos = () => {
           <div className="card-body">
             <h5 className="card-title">Daliasca Rodriguez</h5>
           </div>
+          <p className="card-text">Amante de la tecnología y la naturaleza, con gran disposición para afrontar nuevos retos y aprender de las últimas tendencias tecnológicas</p>
         </div>
       </div> 
       <h2 className="text-center"> Tecnologias empleadas</h2>
