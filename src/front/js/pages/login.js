@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
+import { Navbar } from "../component/navbar";
+import { Footer } from "../component/footer";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -22,6 +24,8 @@ export const Login = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="container">
       <h1 className="d-flex justify-content-center my-5">Inicia Sesión</h1>
       <form
@@ -92,5 +96,7 @@ export const Login = () => {
         </button>
       </form>
     </div>
+    <Footer />
+    </>
   );
 };

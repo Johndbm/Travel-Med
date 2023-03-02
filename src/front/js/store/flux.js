@@ -54,8 +54,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           const data = await response.json();
           console.log(data);
+          if (response.ok) {
+            return true;
+          } else {
+            return false;
+          }
         } catch (error) {
           console.log(error);
+          return false;
         }
       },
 
@@ -167,13 +173,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         const demo = store.demo.map((elm, i) => {
           if (i === index) elm.background = color;
           return elm;
-        })
+        });
       },
 
-
-
       historia: async (
-
         name,
         edad,
         peso,
@@ -193,7 +196,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-
             name: name,
             edad: edad,
             peso: peso,
@@ -235,9 +237,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       //   };
       // };
 
-
-
-
       // prueba: async () => {
       //   const store = getStore();
 
@@ -263,12 +262,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             body: data,
           });
 
-         
           if (response.ok) {
-            return true
-            
-          }else{
-          return false}
+            return true;
+          } else {
+            return false;
+          }
         } catch (error) {
           console.log(error);
         }
@@ -278,28 +276,29 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(data);
         const store = getStore();
         try {
-          const response = await fetch(`${process.env.BACKEND_URL}/api/historia`, {
-            method: "POST",
-            headers: {
-              "Content-Type":"application/json",
-              Authorization: `Bearer ${store.token}`,
-            },
-            body: JSON.stringify(data),
-          });
+          const response = await fetch(
+            `${process.env.BACKEND_URL}/api/historia`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${store.token}`,
+              },
+              body: JSON.stringify(data),
+            }
+          );
 
-         
           if (response.ok) {
-            return true
-            
-          }else{
-          return false}
+            return true;
+          } else {
+            return false;
+          }
         } catch (error) {
           console.log(error);
         }
       },
-    }
-  }
+    },
   };
+};
 
-
-  export default getState;
+export default getState;
