@@ -1,35 +1,31 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export const Login = () => {
+export const Navbuttons = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const { store, actions } = useContext(Context);
-  const login = async (event) => {
-    if (email.trim() !== "" && password.trim() !== "") {
-      const response = await actions.login(email, password);
-      if (response) {
-        navigate("/");
-      } else {
-        alert("Error en el usuario o contraseña, por favor intente nuevamente");
-      }
-    } else {
-      console.log("Todos los campos son requeridos");
-    }
+  const login = (event) => {
+    event.preventDefault();
+    actions.login(email, password);
+    console.log(Text);
   };
 
   return (
-    <div className="container">
-      <h1 className="d-flex justify-content-center my-5">Inicia Sesión</h1>
-      <form
-        className="p-4"
-        onSubmit={(event) => {
-          event.preventDefault();
-        }}
-      >
+    <div className="dropdown">
+      <Link to="/login">
+        <button type="button" className="btn btn-outline-light me-2">
+          Login
+        </button>
+      </Link>
+      <Link to="/register">
+        <button type="button" className="btn btn-primary">
+          Sign-up
+        </button>
+      </Link>
+      <form className="dropdown-menu p-4 dropdown-menu-end">
         <div className="mb-3">
           <label for="exampleDropdownFormEmail2" className="form-label">
             Email address
@@ -76,18 +72,14 @@ export const Login = () => {
                 </Link>
               </a>
             </p>
-            {/* <div className="dropdown">
+            <div className="dropdown">
               <a className="dropdown-item text-muted" href="#">
                 Olvidaste la Contraseña?
               </a>
-            </div> */}
+            </div>
           </div>
         </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={() => login()}
-        >
+        <button type="submit" className="btn btn-primary">
           Sign in
         </button>
       </form>

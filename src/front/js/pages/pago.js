@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Calendar } from "./calendar";
+import Swal from 'sweetalert2'
 
 export const Pago = () => {
   const [user_id, setUser_id] = useState("");
@@ -10,21 +11,34 @@ export const Pago = () => {
   const [confirmation_number, setConfirmation_number] = useState("");
   const [transaction_person, setTransaction_person] = useState("");
   const [image_of_payment, setImage_of_payment] = useState("");
-  // const [image_id, setImage_id] = useState("");
 
   const { actions } = useContext(Context);
-  const pago = (event) => {
-    event.preventDefault();
-    actions.pago(
-      user_id,
-      id_passport,
-      payment_method,
-      confirmation_number,
-      transaction_person,
-      image_of_payment
-      // image_id
-    );
-    console.log(Text);
+  const navigate = useNavigate()
+
+  const pago = async (event) => {
+    // event.preventDefault();
+    const formData = new FormData();
+    formData.append("id_passport", id_passport);
+    formData.append("payment_method", payment_method);
+    formData.append("confirmation_number", confirmation_number);
+    formData.append("transaction_person", transaction_person);
+    formData.append("image_of_payment", image_of_payment);
+
+
+    const respo = await actions.registerPago(formData);
+    if (respo) {
+      Swal.fire(
+        'Good job!',
+        'You clicked the button!',
+        'success'
+      ).then(() => navigate("/historia"))
+    } else {
+      Swal.fire(
+        'Good job!',
+        'error verifique la referencia',
+        'error'
+      )
+    }
   };
 
   return (
@@ -34,15 +48,15 @@ export const Pago = () => {
         <div className="row align-items-start ms-3">
           <div className="col-4">
             <h4 className="d-flex justify-content-between align-items-center mb-3">
-              <span className="text-primary">Consulta con tu especialista</span>
+              <span className="text-primary"></span>
             </h4>
             <ul className="list-group mb-3">
               <li className="list-group-item d-flex justify-content-between lh-sm">
                 <div>
-                  <h6 className="my-0">Ud a agendado una cita con:</h6>
-                  <small className="text-muted">Breve descripción</small>
+                  <h6 className="my-0">Ud a agendado una cita:</h6>
+                  <small className="text-muted">Consulta Medica</small>
                 </div>
-                <span className="text-muted">$12</span>
+                <span className="text-muted">$20</span>
               </li>
               <li className="list-group-item d-flex justify-content-between">
                 <span>Total (USD)</span>
@@ -55,23 +69,11 @@ export const Pago = () => {
           <div className="col">
             <form onSubmit={pago}>
               <div className="row">
-                <div className="col-md-6 mb-3">
-                  <label for="exampleNombre" className="form-label">
-                    Nombres
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="exampleNombre"
-                    required
-                    value={user_id}
-                    onChange={(event) => setUser_id(event.target.value)}
-                  />
-                </div>
+                <div className="col-md-6 mb-3"></div>
               </div>
               <div className="row">
                 <div className="col-md-6 mb-3">
-                  <label for="exampleInputEmail1" className="form-label">
+                  <label htmlFor="exampleInputEmail1" className="form-label">
                     ID o pasaporte
                   </label>
                   <input
@@ -88,50 +90,62 @@ export const Pago = () => {
                   </div>
                 </div>
               </div>
-              <h5>Metodo de pago</h5>{" "}
-              {/*hay un problema con los radio buttons agregandoles la propiedad onChange, arreglar y despues borrar este comentario*/}
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                  value={payment_method}
-                  onChange={(event) => setPayment_method(event.target.value)}
-                />
-                <label className="form-check-label" for="flexRadioDefault1">
-                  PayPal
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                  value={payment_method}
-                  onChange={(event) => setPayment_method(event.target.value)}
-                />
-                <label className="form-check-label" for="flexRadioDefault2">
-                  Transferencia
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
+              <h5>Metodo de pago</h5>
+              <div
+                className=""
+                id="parentMetodoDePago"
+                value={payment_method}
+                onChange={(event) => setPayment_method(event.target.value)}
+              >
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                    value="PayPal"
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexRadioDefault1"
+                  >
+                    PayPal
+                  </label>
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault2"
+                    value="Transferencia"
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexRadioDefault2"
+                  >
+                    Transferencia
+                  </label>
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault3"
+                    value="Zelle"
                   // checked
-                  value={payment_method}
-                  onChange={(event) => setPayment_method(event.target.value)}
-                />
-                <label className="form-check-label" for="flexRadioDefault2">
-                  Zelle
-                </label>
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexRadioDefault3"
+                  >
+                    Zelle
+                  </label>
+                </div>
               </div>
               <div className="col-md-3">
-                <label for="validationDefault05" className="form-label">
+                <label htmlFor="validationDefault05" className="form-label">
                   Numero de confirmacion
                 </label>
                 <input
@@ -146,13 +160,13 @@ export const Pago = () => {
                 />
               </div>
               <div className="col-md-3">
-                <label for="validationDefault05" className="form-label">
+                <label htmlFor="validationDefault05" className="form-label">
                   Nombre de quien hizo la transaccion
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="validationDefault05"
+                  id="validationDefault25"
                   required
                   value={transaction_person}
                   onChange={(event) =>
@@ -161,18 +175,24 @@ export const Pago = () => {
                 />
               </div>
               <div className="col-md-6">
-                <label for="formFile" className="form-label">
+                <label htmlFor="formFile" className="form-label">
                   Adjuntar comprobante de pago
                 </label>
                 <input
                   className="form-control"
                   type="file"
                   id="formFile"
-                  value={image_of_payment}
-                  onChange={(event) => setImage_of_payment(event.target.value)}
+                  name="image_of_payment"
+                  onChange={(event) =>
+                    setImage_of_payment(event.target.files[0])
+                  }
                 />
               </div>
-              <button type="submit" className="btn btn-primary mb-5 mt-3">
+              <button
+                type="button"
+                onClick={pago}
+                className="btn btn-primary mb-5 mt-3"
+              >
                 Enviar
               </button>
             </form>

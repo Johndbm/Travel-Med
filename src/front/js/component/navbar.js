@@ -1,113 +1,60 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ImageUrl from "../../img/logo5.png";
+import { Navbuttons } from "./navbuttons";
+import { Navprofile } from "./navprofile";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store } = useContext(Context);
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <Link to="/">
-          <a className="navbar-brand" href="#">
+        <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <Link to="/" className="navbar-brand">
+
             <img src="logo5.png" alt="Bootstrap" width={125} height={70} />
-          </a>
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#"></a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#nosotros">
-                Sobre Nosotros
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#ofrecemos">
-                Servicios
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#contactanos">
-                Contáctanos
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="dropdown">
+
+          </Link>
           <button
+            className="navbar-toggler"
             type="button"
-            className="btn btn-primary dropdown-toggle"
-            data-bs-toggle="dropdown"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
             aria-expanded="false"
-            data-bs-auto-close="outside"
+            aria-label="Toggle navigation"
           >
-            Iniciar Sesión
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <form className="dropdown-menu p-4 dropdown-menu-end">
-            <div className="mb-3">
-              <label for="exampleDropdownFormEmail2" className="form-label">
-                Email address
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="exampleDropdownFormEmail2"
-                placeholder="email@example.com"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label for="exampleDropdownFormPassword2" className="form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="exampleDropdownFormPassword2"
-                placeholder="Password"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <div className="form-check">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="dropdownCheck2"
-                />
-                <label className="form-check-label" for="dropdownCheck2">
-                  Recordar Contraseña
-                </label>
-                <p className="text-center text-muted mt-5 mb-0">
-                  No tienes una Cuenta?{" "}
-                  <a href="#!" className="fw-bold text-body">
-                    <Link to="/register">
-                      <u>Registrate</u>
-                    </Link>
-                  </a>
-                </p>
-                <div className="dropdown">
-                  <a className="dropdown-item text-muted" href="#">
-                    Olvidaste la Contraseña?
-                  </a>
-                </div>
-              </div>
-            </div>
-            <button type="submit" className="btn btn-primary">
-              Sign in
-            </button>
-          </form>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav px-5">
+              <li className="nav-item px-5">
+                <a className="nav-link active" aria-current="page" href="#"></a>
+              </li>
+              <li className="nav-item px-5">
+                <a className="nav-link" href="#nosotros">
+                  Sobre Nosotros
+                </a>
+              </li>
+              <li className="nav-item px-5">
+                <a className="nav-link" href="#ofrecemos">
+                  Servicios
+                </a>
+              </li>
+              <li className="nav-item px-5">
+                <a className="nav-link" href="#contactanos">
+                  Contáctanos
+                </a>
+              </li>
+              <li className="nav-item px-5">
+                {store.token == null && <Navbuttons />}
+                {store.token !== null && <Navprofile />}
+              </li>
+            </ul>
+          </div>
+          
         </div>
       </div>
     </nav>
