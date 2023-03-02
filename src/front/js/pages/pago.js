@@ -3,6 +3,8 @@ import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Calendar } from "./calendar";
 import Swal from 'sweetalert2'
+import { Navbar } from "../component/navbar";
+import { Footer } from "../component/footer";
 
 export const Pago = () => {
   const [user_id, setUser_id] = useState("");
@@ -43,6 +45,7 @@ export const Pago = () => {
 
   return (
     <>
+    <Navbar />
       <h1 className="d-flex justify-content-center my-5">Formulario de pago</h1>
       <div>
         <div className="row align-items-start ms-3">
@@ -199,6 +202,7 @@ export const Pago = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

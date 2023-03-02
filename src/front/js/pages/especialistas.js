@@ -4,6 +4,8 @@ import medico1 from "../../img/esp1.jpg";
 import medico2 from "../../img/esp2.jpg";
 import medico3 from "../../img/esp3.jpg";
 import medico4 from "../../img/esp4.jpg";
+import { Footer } from "../component/footer";
+import { Navbar } from "../component/navbar";
 
 import { Context } from "../store/appContext";
 
@@ -12,6 +14,7 @@ export const Especialistas = () => {
   // Hay que hacer un map en esta pagina
   return (
     <>
+    <Navbar />
       <div className="d-flex justify-content-center ">
         <div className="card card-es">
           <img src={medico1} className="card-img-top-esp" alt="..." />
@@ -75,6 +78,7 @@ export const Especialistas = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

@@ -8,12 +8,15 @@ import doctor3 from "../../img/doctor3def.jpg";
 import doctor4 from "../../img/doctora4def.jpg";
 import paciente1 from "../../img/paciente-mujer.jpg";
 import paciente4 from "../../img/Paciente-Feliz.jpg";
+import { Navbar } from "../component/navbar";
+import { Footer } from "../component/footer";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
     <>
+    <Navbar />
       {/* Carrusel uno */}
       <div
         id="carouselExampleAutoplaying"
@@ -192,6 +195,7 @@ export const Home = () => {
           </a>
         </p>
       </div>
+      <Footer />
     </>
   );
 };
