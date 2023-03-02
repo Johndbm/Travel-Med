@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../component/navbar";
 import { Footer } from "../component/footer";
+import Swal from "sweetalert2";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
@@ -14,10 +15,26 @@ export const Register = () => {
   const [state, setState] = useState("");
 
   const { store, actions } = useContext(Context);
-  const register = (event) => {
+  const navigate = useNavigate();
+  const register = async (event) => {
     event.preventDefault();
-    actions.register(name, lastname, email, password, country, city, state);
+    const response = await actions.register(
+      name,
+      lastname,
+      email,
+      password,
+      country,
+      city,
+      state
+    );
     console.log(Text);
+    if (response) {
+      Swal.fire("Gracias!", "Transaccion Exitosa!", "success").then(() =>
+        navigate("/login")
+      );
+    } else {
+      Swal.fire("Oops!", "Rechazado🤨, Intente Nuevamente", "error");
+    }
   };
 
   return (
